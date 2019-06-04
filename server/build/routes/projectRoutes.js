@@ -11,11 +11,11 @@ class ProjectRoutes {
         this.config();
     }
     config() {
-        this.router.get('/', projectsController_1.default.list);
-        this.router.get('/:id', projectsController_1.default.oneproject);
-        this.router.post('/', projectsController_1.default.create);
-        this.router.delete('/:id', projectsController_1.default.delete);
-        this.router.put('/:id', projectsController_1.default.update);
+        this.router.get('/api/proyectos', projectsController_1.default.list);
+        this.router.get('/api/proyectos/:id', projectsController_1.default.oneproject);
+        this.router.post('/api/proyectos', projectsController_1.default.create);
+        this.router.delete('/api/proyectos/:id', projectsController_1.default.delete);
+        this.router.put('/api/proyectos/:id', projectsController_1.default.update);
     }
 }
 const projectRoutes = new ProjectRoutes();

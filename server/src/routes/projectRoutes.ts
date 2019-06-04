@@ -10,11 +10,11 @@ class ProjectRoutes {
     }
 
     config(): void {
-        this.router.get('/', projectsController.list);
-        this.router.get('/:id', projectsController.oneproject);
-        this.router.post('/', projectsController.create);
-        this.router.delete('/:id', projectsController.delete);
-        this.router.put('/:id', projectsController.update);
+        this.router.get('/api/proyectos', projectsController.list);
+        this.router.get('/api/proyectos/:id', projectsController.oneproject);
+        this.router.post('/api/proyectos', projectsController.create);
+        this.router.delete('/api/proyectos/:id', projectsController.delete);
+        this.router.put('/api/proyectos/:id', projectsController.update);
     }
 }
 
