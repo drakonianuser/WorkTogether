@@ -17,7 +17,7 @@ class ProjectsController {
     */
     public async oneproject(req: Request, res: Response): Promise<any> {
         const { id }= req.params;
-        const project = await pool.query('SELICT * FROM proyectos WHERE id = ?',[id]);
+        const project = await pool.query('SELECT * FROM proyectos WHERE id = ?',[id]);
         if  (project.length > 0){
              return res.json(project[0]); 
         }
