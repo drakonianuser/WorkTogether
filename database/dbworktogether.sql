@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `workTogether`.`usuarios` (
   PRIMARY KEY (`idusuarios`))
 ENGINE = InnoDB;
 
-DESCRIPTION 'usuarios'
+
 
 -- -----------------------------------------------------
 -- Table `workTogether`.`categoria`
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `workTogether`.`categoria` (
   PRIMARY KEY (`idcategoria`))
 ENGINE = InnoDB;
 
-DESCRIPTION 'categoria'
+
 
 -- -----------------------------------------------------
 -- Table `workTogether`.`proyectos`
@@ -51,12 +51,12 @@ CREATE TABLE IF NOT EXISTS `workTogether`.`proyectos` (
   `nombreproyecto` TINYTEXT NOT NULL,
   `descripcion` TEXT NOT NULL,
   `alcance` TINYTEXT NOT NULL,
-  `fechacreacion` DATE NOT NULL,
+  `fechacreacion` TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
   `usuarios_idusuarios` INT NOT NULL,
   `categoria_idcategoria` INT NOT NULL,
   PRIMARY KEY (`idproyectos`, `usuarios_idusuarios`, `categoria_idcategoria`),
-  INDEX `fk_proyectos_usuarios_idx` (`usuarios_idusuarios` ASC) VISIBLE,
-  INDEX `fk_proyectos_categoria1_idx` (`categoria_idcategoria` ASC) VISIBLE,
+  INDEX `fk_proyectos_usuarios_idx` (`usuarios_idusuarios` ASC) ,
+  INDEX `fk_proyectos_categoria1_idx` (`categoria_idcategoria` ASC) ,
   CONSTRAINT `fk_proyectos_usuarios`
     FOREIGN KEY (`usuarios_idusuarios`)
     REFERENCES `workTogether`.`usuarios` (`idusuarios`)
@@ -69,7 +69,6 @@ CREATE TABLE IF NOT EXISTS `workTogether`.`proyectos` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-DESCRIPTION 'proyectos'
 -- -----------------------------------------------------
 -- Table `workTogether`.`publicaciones`
 -- -----------------------------------------------------
@@ -77,11 +76,11 @@ CREATE TABLE IF NOT EXISTS `workTogether`.`publicaciones` (
   `idpublicaciones` INT NOT NULL,
   `version` VARCHAR(45) NOT NULL,
   `resumen` TINYTEXT NOT NULL,
-  `fechapublicacion` DATE NOT NULL,
+  `fechapublicacion` TIMESTAMP DEFAULT CURRENT_TIMESTAMP  NOT NULL,
   `proyectos_idproyectos` INT NOT NULL,
   `proyectos_usuarios_idusuarios` INT NOT NULL,
   PRIMARY KEY (`idpublicaciones`, `proyectos_idproyectos`, `proyectos_usuarios_idusuarios`),
-  INDEX `fk_publicaciones_proyectos1_idx` (`proyectos_idproyectos` ASC, `proyectos_usuarios_idusuarios` ASC) VISIBLE,
+  INDEX `fk_publicaciones_proyectos1_idx` (`proyectos_idproyectos` ASC, `proyectos_usuarios_idusuarios` ASC) ,
   CONSTRAINT `fk_publicaciones_proyectos1`
     FOREIGN KEY (`proyectos_idproyectos` , `proyectos_usuarios_idusuarios`)
     REFERENCES `workTogether`.`proyectos` (`idproyectos` , `usuarios_idusuarios`)
@@ -89,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `workTogether`.`publicaciones` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-DESCRIPTION 'publicaciones'
+
 -- -----------------------------------------------------
 -- Table `workTogether`.`imagen`
 -- -----------------------------------------------------
@@ -99,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `workTogether`.`imagen` (
   PRIMARY KEY (`idimagen`))
 ENGINE = InnoDB;
 
-DESCRIPTION 'imagen'
+
 -- -----------------------------------------------------
 -- Table `workTogether`.`comentarios`
 -- -----------------------------------------------------
@@ -109,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `workTogether`.`comentarios` (
   PRIMARY KEY (`idcomentarios`))
 ENGINE = InnoDB;
 
-DESCRIPTION 'comentarios'
+
 -- -----------------------------------------------------
 -- Table `workTogether`.`documentacion`
 -- -----------------------------------------------------
@@ -122,9 +121,9 @@ CREATE TABLE IF NOT EXISTS `workTogether`.`documentacion` (
   `publicaciones_proyectos_usuarios_idusuarios` INT NOT NULL,
   `comentarios_idcomentarios` INT NOT NULL,
   PRIMARY KEY (`iddocumentacion`, `imagen_idimagen`, `publicaciones_idpublicaciones`, `publicaciones_proyectos_idproyectos`, `publicaciones_proyectos_usuarios_idusuarios`, `comentarios_idcomentarios`),
-  INDEX `fk_documentacion_imagen1_idx` (`imagen_idimagen` ASC) VISIBLE,
-  INDEX `fk_documentacion_publicaciones1_idx` (`publicaciones_idpublicaciones` ASC, `publicaciones_proyectos_idproyectos` ASC, `publicaciones_proyectos_usuarios_idusuarios` ASC) VISIBLE,
-  INDEX `fk_documentacion_comentarios1_idx` (`comentarios_idcomentarios` ASC) VISIBLE,
+  INDEX `fk_documentacion_imagen1_idx` (`imagen_idimagen` ASC) ,
+  INDEX `fk_documentacion_publicaciones1_idx` (`publicaciones_idpublicaciones` ASC, `publicaciones_proyectos_idproyectos` ASC, `publicaciones_proyectos_usuarios_idusuarios` ASC) ,
+  INDEX `fk_documentacion_comentarios1_idx` (`comentarios_idcomentarios` ASC) ,
   CONSTRAINT `fk_documentacion_imagen1`
     FOREIGN KEY (`imagen_idimagen`)
     REFERENCES `workTogether`.`imagen` (`idimagen`)
@@ -142,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `workTogether`.`documentacion` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-DESCRIPTION 'documentacion'
+
 -- -----------------------------------------------------
 -- Table `workTogether`.`reportes`
 -- -----------------------------------------------------
@@ -153,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `workTogether`.`reportes` (
   `proyectos_usuarios_idusuarios` INT NOT NULL,
   `proyectos_categoria_idcategoria` INT NOT NULL,
   PRIMARY KEY (`idreportes`, `proyectos_idproyectos`, `proyectos_usuarios_idusuarios`, `proyectos_categoria_idcategoria`),
-  INDEX `fk_reportes_proyectos1_idx` (`proyectos_idproyectos` ASC, `proyectos_usuarios_idusuarios` ASC, `proyectos_categoria_idcategoria` ASC) VISIBLE,
+  INDEX `fk_reportes_proyectos1_idx` (`proyectos_idproyectos` ASC, `proyectos_usuarios_idusuarios` ASC, `proyectos_categoria_idcategoria` ASC) ,
   CONSTRAINT `fk_reportes_proyectos1`
     FOREIGN KEY (`proyectos_idproyectos` , `proyectos_usuarios_idusuarios` , `proyectos_categoria_idcategoria`)
     REFERENCES `workTogether`.`proyectos` (`idproyectos` , `usuarios_idusuarios` , `categoria_idcategoria`)
@@ -161,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `workTogether`.`reportes` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-DESCRIPTION 'reportes'
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
