@@ -12,45 +12,37 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class ProjectsController {
+class DocumentController {
     constructor() {
     }
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const projects = yield database_1.default.query('SELECT * FROM proyectos');
-            res.json(projects);
+            const { id_proyect } = req.params;
+            const documents = yield database_1.default.query('SELECT * FROM documentacion WHERE publicaciones_idpublicaciones = ?', [id_proyect]);
+            res.json(documents);
         });
     }
     /**
-     * oneproject
-    */
-    oneproject(req, res) {
+     * onedocument
+     */
+    onedocument(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const project = yield database_1.default.query('SELECT * FROM proyectos WHERE id = ?', [id]);
-            if (project.length > 0) {
-                return res.json(project[0]);
+            const { id_proyect, id_document } = req.params;
+            const document = yield database_1.default.query('SELECT * FROM documentacion WHERE publicaciones_idpublicaciones = ? , iddocumentacion = ? ', [id_proyect, id_document]);
+            if (document.length > 0) {
+                return res.json(document[0]);
             }
-            res.status(404).json({ text: "El proyecto no existe" });
+            ;
+            res.status(404).json({ text: "El documento no existe" });
         });
     }
     /**
-     * create
+     * Create
      */
-    create(req, res) {
+    Create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO proyectos set ?', [req.body]);
-            res.send("project create");
-        });
-    }
-    /**
-     * delete
-     */
-    delete(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            yield database_1.default.query('DELETE FORM proyectos WHERE id = ?'[id]);
-            res.json({ message: "El proyecto fue eliminado" });
+            yield database_1.default.query('INSERT INTO documentacion SET ?', [req.body]);
+            res.send("document create");
         });
     }
     /**
@@ -58,11 +50,9 @@ class ProjectsController {
      */
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            yield database_1.default.query('UPDATE proyectos SET ? WHERE id = ?'[req.body, id]);
+            const { id_proyect, id_document } = req.params;
+            yield database_1.default.query('UPDATE documentacion SET ? WHERE id = ? ', [req.body, id_proyect, id_document]);
             res.json({ message: "El proyecto fue actualizado" });
         });
     }
 }
-const projectscontroller = new ProjectsController();
-exports.default = projectscontroller;
