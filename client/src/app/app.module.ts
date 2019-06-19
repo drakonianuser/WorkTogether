@@ -13,6 +13,22 @@ import { EditarPerfilComponent } from './usuarios/perfiles/editar-perfil/editar-
 import { NavegacionComponent } from './navegacion/navegacion.component';
 import { VistaProyectoComponent } from './proyectos/vista-proyecto/vista-proyecto.component';
 import { VistaPerfilComponent } from './usuarios/perfiles/vista-perfil/vista-perfil.component';
+import { ActualizarProyectoComponent } from './proyectos/actualizar-proyecto/actualizar-proyecto.component';
+
+
+import {RouterModule, Route} from '@angular/router';
+
+const routes: Route[]=[
+  {path: '', component: IndexComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'perfil', component: VistaPerfilComponent},
+  {path: 'proyecto', component: VistaProyectoComponent},
+  {path: 'registro', component: RegistroComponent},
+  {path: 'recuperar', component: RecuperarContra1Component},
+  {path: 'actualizar', component: ActualizarProyectoComponent},
+  {path: 'CrearProyecto', component: CrearProyectoComponent},
+  {path: 'editar', component: EditarPerfilComponent}
+]
 
 @NgModule({
   declarations: [
@@ -26,11 +42,13 @@ import { VistaPerfilComponent } from './usuarios/perfiles/vista-perfil/vista-per
     EditarPerfilComponent,
     NavegacionComponent,
     VistaProyectoComponent,
-    VistaPerfilComponent
+    VistaPerfilComponent,
+    ActualizarProyectoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
