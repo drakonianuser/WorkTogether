@@ -56,3 +56,5 @@ class DocumentController {
         });
     }
 }
+const documentController = new DocumentController();
+exports.default = documentController;

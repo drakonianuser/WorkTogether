@@ -6,8 +6,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
+const express_session_1 = __importDefault(require("express-session"));
+const passport_1 = __importDefault(require("passport"));
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const projectRoutes_1 = __importDefault(require("./routes/projectRoutes"));
+const documentRoutes_1 = __importDefault(require("./routes/documentRoutes"));
+//require("./auth");
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -20,11 +24,21 @@ class Server {
         this.app.use(cors_1.default());
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: false }));
+        this.app.use(express_session_1.default({
+            secret: "togetherwork",
+            resave: false,
+            saveUninitialized: true,
+        }));
+        this.app.use(passport_1.default.initialize());
+        this.app.use(passport_1.default.session());
     }
+    //rutas
     routes() {
         this.app.use('/', indexRoutes_1.default);
         this.app.use('/projects', projectRoutes_1.default);
+        this.app.use('/document', documentRoutes_1.default);
     }
+    //conecion
     start() {
         this.app.listen(this.app.get('port'), () => {
             console.log('Server en puerto', this.app.get('port'));

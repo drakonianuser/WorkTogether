@@ -18,7 +18,9 @@ class ProjectsController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const projects = yield database_1.default.query('SELECT * FROM proyectos');
+            const detalleprojects = yield database_1.default.query('SELECT * FROM detalleproyecto');
             res.json(projects);
+            res.json(detalleprojects);
         });
     }
     /**
@@ -27,7 +29,7 @@ class ProjectsController {
     oneproject(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const project = yield database_1.default.query('SELECT * FROM proyectos WHERE id = ?', [id]);
+            const project = yield database_1.default.query('SELECT * FROM detalleproyecto WHERE iddetalleproyecto = ?', [id]);
             if (project.length > 0) {
                 return res.json(project[0]);
             }
@@ -41,16 +43,6 @@ class ProjectsController {
         return __awaiter(this, void 0, void 0, function* () {
             yield database_1.default.query('INSERT INTO proyectos set ?', [req.body]);
             res.send("project create");
-        });
-    }
-    /**
-     * delete
-     */
-    delete(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            yield database_1.default.query('DELETE FORM proyectos WHERE id = ?'[id]);
-            res.json({ message: "El proyecto fue eliminado" });
         });
     }
     /**
