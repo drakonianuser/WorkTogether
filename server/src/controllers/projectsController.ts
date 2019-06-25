@@ -30,8 +30,9 @@ class ProjectsController {
      * create 
      */
     public async create (req:Request, res: Response): Promise<void>{
+        console.log(req.body);
         await pool.query('INSERT INTO proyectos set ?', [req.body]);
-
+        
         res.send("project create");
     }
 

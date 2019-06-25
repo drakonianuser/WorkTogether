@@ -12,28 +12,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class ProjectsController {
+class UsuarioController {
     constructor() {
     }
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const projects = yield database_1.default.query('SELECT * FROM proyectos');
-            const detalleprojects = yield database_1.default.query('SELECT * FROM detalleproyecto');
-            res.json(projects);
-            res.json(detalleprojects);
+            const user = yield database_1.default.query('SELECT * FROM usuarios');
+            res.json(user);
         });
     }
     /**
-     * oneproject
+     * oneuser
     */
-    oneproject(req, res) {
+    oneuser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const project = yield database_1.default.query('SELECT * FROM detalleproyecto WHERE iddetalleproyecto = ?', [id]);
-            if (project.length > 0) {
-                return res.json(project[0]);
+            const user = yield database_1.default.query('SELECT * FROM usuarios WHERE idusuarios = ?', [id]);
+            if (user.length > 0) {
+                return res.json(user[0]);
             }
-            res.status(404).json({ text: "El proyecto no existe" });
+            res.status(404).json({ text: "El usuario no existe" });
         });
     }
     /**
@@ -42,8 +40,8 @@ class ProjectsController {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);
-            yield database_1.default.query('INSERT INTO proyectos set ?', [req.body]);
-            res.send("project create");
+            yield database_1.default.query('INSERT INTO usuarios set ?', [req.body]);
+            res.send("user create");
         });
     }
     /**
@@ -52,10 +50,10 @@ class ProjectsController {
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('UPDATE proyectos SET ? WHERE id = ?'[req.body, id]);
-            res.json({ message: "El proyecto fue actualizado" });
+            yield database_1.default.query('UPDATE usuarios SET ? WHERE id = ?'[req.body, id]);
+            res.json({ message: "El usuario fue actualizado" });
         });
     }
 }
-const projectscontroller = new ProjectsController();
-exports.default = projectscontroller;
+const usuarioController = new UsuarioController();
+exports.default = usuarioController;

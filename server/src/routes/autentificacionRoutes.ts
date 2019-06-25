@@ -1,4 +1,4 @@
-import { Router } from "express";
+/*import { Router } from "express";
 
 import autentificacionController from "../controllers/autentificacionControllers";
 
@@ -12,7 +12,7 @@ class AutentificacionRoutes {
 
     /**
      *config 
-     */
+     
     config(): void {
         this.router.post('/api/login', autentificacionController.Registro);
     }
@@ -20,4 +20,4 @@ class AutentificacionRoutes {
 }
 
 const autentificacionRoutes = new AutentificacionRoutes();
-export default autentificacionRoutes.router;
+export default autentificacionRoutes.router;*/

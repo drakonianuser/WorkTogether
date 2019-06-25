@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+/*import { Request, Response } from "express";
 import passport from "../auth";
 
 import pool from "../database";
@@ -10,7 +10,7 @@ class AutentificacionController {
 
     /**
      * Registro
-     */
+     
     public async Registro(req: Request, res: Response): Promise<void> {
         passport.authenticate('local.signup',{
             successRedirect: '../profile',
@@ -22,4 +22,4 @@ class AutentificacionController {
 }
 
 const autentificacionController = new AutentificacionController();
-export default autentificacionController;
+export default autentificacionController;*/

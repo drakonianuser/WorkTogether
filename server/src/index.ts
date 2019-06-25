@@ -7,7 +7,10 @@ import passport from "passport";
 import indexRoutes from "./routes/indexRoutes";
 import projectRoutes from "./routes/projectRoutes";
 import documentRoutes from "./routes/documentRoutes";
-//require("./auth");
+import usuarioRoutes from "./routes/usuarioRoutes";
+import categoriaRutes from "./routes/categoriasRoutes";
+import detalleProyectoRoutes from "./routes/detalleProyectoRoutes";
+
 
 class Server {
     public app: Application
@@ -39,6 +42,10 @@ class Server {
         this.app.use('/',indexRoutes);
         this.app.use('/projects',projectRoutes);
         this.app.use('/document',documentRoutes);
+        this.app.use('/usuario',usuarioRoutes);
+        this.app.use('/categoria',categoriaRutes);
+        this.app.use('/detallepro',detalleProyectoRoutes)
+        
     }
     
     //conecion

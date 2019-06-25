@@ -1,25 +1,53 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
+/*import passport from "passport";
+import passportLocal from "passport-local";
+
+import  User  from "./models/User";
+import { Request, Response, NextFunction } from "express";
+
+const LocalStrategy = passportLocal.Strategy;
+
+passport.serializeUser<any, any>((user, done) => {
+    done(undefined, user.id);
+});
+
+passport.use(new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
+    User.findOne({ email: email.toLowerCase() }, (err:any, user: any) => {
+        if (err) { return done(err); }
+        if (!user) {
+            return done(undefined, false, { message: `Email ${email} not found.` });
+        }
+        user.comparePassword(password, (err: Error, isMatch: boolean) => {
+            if (err) { return done(err); }
+            if (isMatch) {
+                return done(undefined, user);
+            }
+            return done(undefined, false, { message: "Invalid email or password." });
+        });
     });
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const LocalStrategy = require('passport-local').Strategy;
-const passport = require("passport");
-const database_1 = __importDefault(require("./database"));
-passport.use('local.signup', new LocalStrategy({
-    usernameField: 'username',
-    passwordField: 'password',
-    passReqToCallBack: true
-}, (req, done) => __awaiter(this, void 0, void 0, function* () {
-    const result = yield database_1.default.query("INSERT INTO worktogether.usuarios SET =?", [req.body]);
-    return done;
-})));
-exports.default = passport;
+}));
+
+passport.use(new LocalStrategy(
+    function (username, password, done) {
+        User.findOne({ username: username }, function (err:any, user:any) {
+            if (err) { return done(err); }
+            if (!user) {
+                return done(null, false, { message: 'Incorrect username.' });
+            }
+            if (!user.validPassword(password)) {
+                return done(null, false, { message: 'Incorrect password.' });
+            }
+            return done(null, user);
+        });
+    }
+));
+passport.serializeUser(function (user, done) {
+    done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+    User.findById(id, function (err:any, user:any) {
+        done(err, user);
+    });
+});
+*/ 

@@ -11,7 +11,9 @@ const passport_1 = __importDefault(require("passport"));
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const projectRoutes_1 = __importDefault(require("./routes/projectRoutes"));
 const documentRoutes_1 = __importDefault(require("./routes/documentRoutes"));
-//require("./auth");
+const usuarioRoutes_1 = __importDefault(require("./routes/usuarioRoutes"));
+const categoriasRoutes_1 = __importDefault(require("./routes/categoriasRoutes"));
+const detalleProyectoRoutes_1 = __importDefault(require("./routes/detalleProyectoRoutes"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -37,6 +39,9 @@ class Server {
         this.app.use('/', indexRoutes_1.default);
         this.app.use('/projects', projectRoutes_1.default);
         this.app.use('/document', documentRoutes_1.default);
+        this.app.use('/usuario', usuarioRoutes_1.default);
+        this.app.use('/categoria', categoriasRoutes_1.default);
+        this.app.use('/detallepro', detalleProyectoRoutes_1.default);
     }
     //conecion
     start() {
