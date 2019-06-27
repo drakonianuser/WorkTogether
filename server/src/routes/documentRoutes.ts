@@ -14,10 +14,10 @@ class DocumentRoutes {
      *config 
      */
      config ():void {
-        this.router.get('/api/document/:idproyeto',documentControllers.list);
-        this.router.get('/api/document/:idproyecto/:idDocumento',documentControllers.onedocument);
-        this.router.post('/api/document/:idproyecto',documentControllers.Create);
-        this.router.put('/api/document/:idproyecto/:idDocument',documentControllers.update);
+        this.router.get('/api/:idproyeto',documentControllers.list);
+        this.router.get('/api/:idproyecto/:idDocumento',documentControllers.onedocument);
+        this.router.post('/api/:idproyecto',documentControllers.Create);
+        this.router.put('/api/:idproyecto/:idDocument',documentControllers.update);
     }
 
 }

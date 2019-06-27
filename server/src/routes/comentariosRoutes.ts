@@ -10,10 +10,10 @@ class CategoriaRoutes {
     }
 
     config(): void {
-        this.router.get('/api/categorias/:id', categoriaController.list);
-        this.router.post('/api/categorias', categoriaController.create);
-        this.router.put('/api/categorias/:id', categoriaController.update);
-        this.router.delete('/api/categorias/:id', categoriaController.Delete);
+        this.router.get('/api/:id', categoriaController.list);
+        this.router.post('/api/', categoriaController.create);
+        this.router.put('/api/:id', categoriaController.update);
+        this.router.delete('/api/:id', categoriaController.Delete);
     }
 }
 

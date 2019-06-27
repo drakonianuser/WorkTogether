@@ -10,11 +10,11 @@ class ReportesRoutes {
     }
 
     config(): void {
-        this.router.get('/api/reportes', ReportesController.list);
-        this.router.get('/api/reportes/:id', ReportesController.one);
-        this.router.post('/api/reportes', ReportesController.create);
-        this.router.put('/api/reportes/:id', ReportesController.update);
-        this.router.delete('/api/reportes/:id', ReportesController.Delete);
+        this.router.get('/api/', ReportesController.list);
+        this.router.get('/api/:id', ReportesController.one);
+        this.router.post('/api/', ReportesController.create);
+        this.router.put('/api/:id', ReportesController.update);
+        this.router.delete('/api/:id', ReportesController.Delete);
     }
 }
 

@@ -10,10 +10,10 @@ class DetalleProyectoRoutes {
     }
 
     config(): void {
-        this.router.get('/api/detallePro', DetalleProyectoController.list);
-        this.router.get('/api/detallePro/:id', DetalleProyectoController.one);
-        this.router.post('/api/detallePro', DetalleProyectoController.create);
-        this.router.put('/api/detallePro/:id', DetalleProyectoController.update);
+        this.router.get('/api/', DetalleProyectoController.list);
+        this.router.get('/api/:id', DetalleProyectoController.one);
+        this.router.post('/api/', DetalleProyectoController.create);
+        this.router.put('/api/:id', DetalleProyectoController.update);
     }
 }
 

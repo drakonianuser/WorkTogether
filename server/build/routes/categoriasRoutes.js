@@ -11,11 +11,11 @@ class CategoriaRoutes {
         this.config();
     }
     config() {
-        this.router.get('/api/categorias', categoriasController_1.default.list);
-        this.router.get('/api/categorias/:id', categoriasController_1.default.one);
-        this.router.post('/api/categorias', categoriasController_1.default.create);
-        this.router.put('/api/categorias/:id', categoriasController_1.default.update);
-        this.router.delete('/api/categorias/:id', categoriasController_1.default.Delete);
+        this.router.get('/api/', categoriasController_1.default.list);
+        this.router.get('/api/:id', categoriasController_1.default.one);
+        this.router.post('/api', categoriasController_1.default.create);
+        this.router.put('/api/:id', categoriasController_1.default.update);
+        this.router.delete('/api/:id', categoriasController_1.default.Delete);
     }
 }
 const categoriaRoutes = new CategoriaRoutes();
