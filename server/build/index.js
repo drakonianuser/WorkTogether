@@ -49,7 +49,7 @@ class Server {
         this.app.use('/categoria', categoriasRoutes_1.default);
         this.app.use('/detallepro', detalleProyectoRoutes_1.default);
         this.app.use('/comentarios', comentariosRoutes_1.default);
-        this.app.use('/pulicaciones', publicacionesRoutes_1.default);
+        this.app.use('/publicaciones', publicacionesRoutes_1.default);
         this.app.use('/detallepu', detallePublicacionesRoutes_1.default);
         this.app.use('/imagenes', imangenesRoutes_1.default);
         this.app.use('/reportes', reportesRoutes_1.default);

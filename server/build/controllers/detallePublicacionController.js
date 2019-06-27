@@ -18,7 +18,7 @@ class ProjectsController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idproyecto } = req.params;
-            const publicaciones = yield database_1.default.query('SELECT * FROM publicaciones WHERE proyectos_idproyectos = ?'[idproyecto]);
+            const publicaciones = yield database_1.default.query('SELECT * FROM publicaciones WHERE proyectos_idproyectos = ?'[parseInt(idproyecto)]);
             const detallepublicaciones = yield database_1.default.query('SELECT * FROM detalleproyecto where iddetallepublicacion = ?'[publicaciones.iddetallepublicacion]);
             res.json({ "publicacion": publicaciones, "detalle": detallepublicaciones });
         });
@@ -41,9 +41,10 @@ class ProjectsController {
      */
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const estatus = yield database_1.default.query('INSERT INTO detallepublicacion ? vaules ?', [req.body]);
+            console.log(req.body);
+            const respuesta = yield database_1.default.query('INSERT INTO detallepublicacion set ?', [req.body]);
             res.send("detallepublicacion create");
-            res.json(estatus);
+            console.log(respuesta);
         });
     }
     /**

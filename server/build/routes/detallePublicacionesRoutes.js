@@ -13,7 +13,7 @@ class DetallePublicacionRoutes {
     config() {
         this.router.get('/api/detallepu/:idproyecto', detallePublicacionController_1.default.list);
         this.router.get('/api/detallepu/:id/:detalle', detallePublicacionController_1.default.onepublicacion);
-        this.router.post('/api/detallepu/:id', detallePublicacionController_1.default.create);
+        this.router.post('/api/detallepu', detallePublicacionController_1.default.create);
         this.router.put('/api/detallepu/:id', detallePublicacionController_1.default.update);
     }
 }

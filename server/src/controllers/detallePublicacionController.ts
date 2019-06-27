@@ -9,7 +9,7 @@ class ProjectsController {
 
     public async list(req: Request, res: Response) {
         const { idproyecto } = req.params;
-        const publicaciones = await pool.query('SELECT * FROM publicaciones WHERE proyectos_idproyectos = ?'[idproyecto]);
+        const publicaciones = await pool.query('SELECT * FROM publicaciones WHERE proyectos_idproyectos = ?'[parseInt(idproyecto)]);
         const detallepublicaciones = await pool.query('SELECT * FROM detalleproyecto where iddetallepublicacion = ?'[publicaciones.iddetallepublicacion]);
         res.json({"publicacion":publicaciones,"detalle":detallepublicaciones});
     }
@@ -30,10 +30,11 @@ class ProjectsController {
      * create 
      */
     public async create(req: Request, res: Response): Promise<void> {
-
-        const estatus = await pool.query('INSERT INTO detallepublicacion ? vaules ?', [req.body]);
+        console.log(req.body);
+        const respuesta = await pool.query('INSERT INTO detallepublicacion set ?', [req.body]);
         res.send("detallepublicacion create");
-        res.json(estatus);
+        console.log(respuesta);
+
     }
 
 

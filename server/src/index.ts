@@ -54,7 +54,7 @@ class Server {
         this.app.use('/categoria',categoriaRutes);
         this.app.use('/detallepro',detalleProyectoRoutes);
         this.app.use('/comentarios',comentariosRoutes);
-        this.app.use('/pulicaciones', publicacionesRoutes);
+        this.app.use('/publicaciones', publicacionesRoutes);
         this.app.use('/detallepu',detallePublicacionesRoutes);
         this.app.use('/imagenes',imagenesRoutes);
         this.app.use('/reportes',reportesRoutes);

@@ -9,9 +9,8 @@ class PublicacionController {
 
     public async list(req: Request, res: Response) {
         const { idproyecto } = req.params;
-        const publicaciones = await pool.query('SELECT * FROM publicaciones WHERE proyectos_idproyectos = ?'[idproyecto]);
-        const detallepublicaciones = await pool.query('SELECT * FROM detalleproyecto where iddetallepublicacion = ?'[publicaciones.iddetallepublicacion]);
-        res.json({"publicacion":publicaciones,"detalle":detallepublicaciones});
+        const publicaciones = await pool.query('SELECT * FROM publicaciones WHERE proyectos_idproyectos = ?',[idproyecto]);
+        res.json(publicaciones);
     }
 
     /**
@@ -19,7 +18,8 @@ class PublicacionController {
     */
     public async onepublicacion(req: Request, res: Response): Promise<any> {
         const { detalle } = req.params;
-        const project = await pool.query('SELECT * FROM detallepublicacion WHERE iddetallepublicacion = ?', [detalle]);
+        const { idproyecto } = req.params;
+        const project = await pool.query('SELECT * FROM publicaciones WHERE idpublicacion , proyectos_idproyectos values ?', [detalle,idproyecto]);
         if (project.length > 0) {
             return res.json(project[0]);
         }
@@ -31,7 +31,7 @@ class PublicacionController {
      */
     public async create(req: Request, res: Response): Promise<void> {
 
-        const estatus = await pool.query('INSERT INTO publicaciones ? vaules ?', [req.body]);
+        const estatus = await pool.query('INSERT INTO publicaciones set ?', [req.body]);
         res.send("project create");
         res.json(estatus);
     }
@@ -42,8 +42,16 @@ class PublicacionController {
      */
     public async update(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
-        await pool.query('UPDATE proyectos SET ? WHERE id = ?'[req.body, id]);
+        await pool.query('UPDATE publicaciones SET ? WHERE id = ?',[req.body, id]);
         res.json({ message: "El proyecto fue actualizado" });
+    }
+    /**
+     * Delete
+     */
+    public async Delete(req: Request, res: Response): Promise<any> {
+        const { idpublicaciones } = req.params;
+        await pool.query('delete  from worktogether.publicaciones where idpublicaciones = ?', [parseInt(idpublicaciones)]);
+        res.json({ message: "la publicacion fue eliminadas" });
     }
 
 }

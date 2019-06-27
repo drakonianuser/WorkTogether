@@ -18,9 +18,8 @@ class PublicacionController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idproyecto } = req.params;
-            const publicaciones = yield database_1.default.query('SELECT * FROM publicaciones WHERE proyectos_idproyectos = ?'[idproyecto]);
-            const detallepublicaciones = yield database_1.default.query('SELECT * FROM detalleproyecto where iddetallepublicacion = ?'[publicaciones.iddetallepublicacion]);
-            res.json({ "publicacion": publicaciones, "detalle": detallepublicaciones });
+            const publicaciones = yield database_1.default.query('SELECT * FROM publicaciones WHERE proyectos_idproyectos = ?', [idproyecto]);
+            res.json(publicaciones);
         });
     }
     /**
@@ -29,7 +28,8 @@ class PublicacionController {
     onepublicacion(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { detalle } = req.params;
-            const project = yield database_1.default.query('SELECT * FROM detallepublicacion WHERE iddetallepublicacion = ?', [detalle]);
+            const { idproyecto } = req.params;
+            const project = yield database_1.default.query('SELECT * FROM publicaciones WHERE idpublicacion , proyectos_idproyectos values ?', [detalle, idproyecto]);
             if (project.length > 0) {
                 return res.json(project[0]);
             }
@@ -41,7 +41,7 @@ class PublicacionController {
      */
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const estatus = yield database_1.default.query('INSERT INTO publicaciones ? vaules ?', [req.body]);
+            const estatus = yield database_1.default.query('INSERT INTO publicaciones set ?', [req.body]);
             res.send("project create");
             res.json(estatus);
         });
@@ -52,8 +52,18 @@ class PublicacionController {
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('UPDATE proyectos SET ? WHERE id = ?'[req.body, id]);
+            yield database_1.default.query('UPDATE publicaciones SET ? WHERE id = ?', [req.body, id]);
             res.json({ message: "El proyecto fue actualizado" });
+        });
+    }
+    /**
+     * Delete
+     */
+    Delete(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { idpublicaciones } = req.params;
+            yield database_1.default.query('delete  from worktogether.publicaciones where idpublicaciones = ?', [parseInt(idpublicaciones)]);
+            res.json({ message: "la publicacion fue eliminadas" });
         });
     }
 }
