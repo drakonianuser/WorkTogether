@@ -17,22 +17,23 @@ class ProjectsController {
     }
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const projects = yield database_1.default.query('SELECT * FROM proyectos');
-            const detalleprojects = yield database_1.default.query('SELECT * FROM detalleproyecto');
-            res.json({ "proyect": projects, "detalle": detalleprojects });
+            const { idproyecto } = req.params;
+            const publicaciones = yield database_1.default.query('SELECT * FROM publicaciones WHERE proyectos_idproyectos = ?'[idproyecto]);
+            const detallepublicaciones = yield database_1.default.query('SELECT * FROM detalleproyecto where iddetallepublicacion = ?'[publicaciones.iddetallepublicacion]);
+            res.json({ "publicacion": publicaciones, "detalle": detallepublicaciones });
         });
     }
     /**
-     * oneproject
+     * one
     */
-    oneproject(req, res) {
+    onepublicacion(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const project = yield database_1.default.query('SELECT * FROM detalleproyecto WHERE iddetalleproyecto = ?', [id]);
+            const project = yield database_1.default.query('SELECT * FROM detallepublicacion WHERE iddetallepublicacion = ?', [id]);
             if (project.length > 0) {
                 return res.json(project[0]);
             }
-            res.status(404).json({ text: "El proyecto no existe" });
+            res.status(404).json({ text: "La publicacion  no existe" });
         });
     }
     /**
@@ -40,9 +41,9 @@ class ProjectsController {
      */
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.body);
-            yield database_1.default.query('INSERT INTO proyectos set ?', [req.body]);
-            res.send("project create");
+            const estatus = yield database_1.default.query('INSERT INTO detallepublicacion ? vaules ?', [req.body]);
+            res.send("detallepublicacion create");
+            res.json(estatus);
         });
     }
     /**
@@ -51,8 +52,8 @@ class ProjectsController {
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('UPDATE proyectos SET ? WHERE id = ?'[req.body, id]);
-            res.json({ message: "El proyecto fue actualizado" });
+            yield database_1.default.query('UPDATE detallepublicacion SET ? WHERE iddetallepublicacion = ?'[req.body, id]);
+            res.json({ message: "El detallepublicacion fue actualizado" });
         });
     }
 }

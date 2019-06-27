@@ -15,6 +15,7 @@ class UsuarioRoutes {
         this.router.get('/api/usuario/:id', usuarioController_1.default.oneuser);
         this.router.post('/api/usuarios', usuarioController_1.default.create);
         this.router.put('/api/usuario/:id', usuarioController_1.default.update);
+        this.router.delete('/api/usuario/:id', usuarioController_1.default.Delete);
     }
 }
 const usuarioRoutes = new UsuarioRoutes();

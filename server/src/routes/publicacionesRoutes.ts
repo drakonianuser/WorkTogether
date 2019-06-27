@@ -1,8 +1,8 @@
 import { Router } from "express";
 
-import projectsController from "../controllers/publicacionControllers";
+import publicacionController from "../controllers/publicacionControllers";
 
-class ProjectRoutes {
+class PublicacionRoutes {
 
     public router: Router = Router();
     constructor() {
@@ -10,12 +10,12 @@ class ProjectRoutes {
     }
 
     config(): void {
-        this.router.get('/api/publicaciones/:idproyecto', projectsController.list);
-        this.router.get('/api/publicacion/:id', projectsController.onepublicacion);
-        this.router.post('/api/publicacion/:id', projectsController.create);
-        this.router.put('/api/publicacion/:id', projectsController.update);
+        this.router.get('/api/publicaciones/:idproyecto', publicacionController.list);
+        this.router.get('/api/publicacion/:idproyecto/:detalle', publicacionController.onepublicacion);
+        this.router.post('/api/publicacion/:id', publicacionController.create);
+        this.router.put('/api/publicacion/:id', publicacionController.update);
     }
 }
 
-const projectRoutes = new ProjectRoutes();
-export default projectRoutes.router;
+const publicacionRoutes = new PublicacionRoutes();
+export default publicacionRoutes.router;

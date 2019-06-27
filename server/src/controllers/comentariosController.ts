@@ -8,30 +8,20 @@ class CategoriaController {
     }
 
     public async list(req: Request, res: Response) {
-        const Categoria = await pool.query('SELECT * FROM categoria');
-        res.json(Categoria);
+        const { iddocumento } = req.params;
+        const comentarios = await pool.query('SELECT * FROM comentarios where iddocumento = ? ',[iddocumento]);
+        res.json(comentarios);
     }
 
-    /**
-     * one
-    */
-    public async one(req: Request, res: Response): Promise<any> {
-        const { id }= req.params;
-        const project = await pool.query('SELECT * FROM categoria WHERE idcategoria = ?',[id]);
-        if  (project.length > 0){
-             return res.json(project[0]); 
-        }
-        res.status(404).json({text: "la categoria no existe"});
-    }
 
     /**
      * create 
      * este metodo espara crear una nueva categoria
      * resive el nombre de la nueva categoria atrabes de un json 
      */
-    public async create (req:Request, res: Response): Promise<void>{
-        await pool.query('INSERT INTO categoria set ?', [req.body]);
-        res.send("categoria create");
+    public async create(req: Request, res: Response): Promise<void> {
+        await pool.query('INSERT INTO comentarios set ?', [req.body]);
+        res.send("comentario create");
     }
 
 
@@ -40,10 +30,10 @@ class CategoriaController {
      * este metodo espara corregir alguna categoria
      * resive el identificador atrabes de la ruta y el json con el nombre de la categoria corregido 
      */
-    public async update(req:Request, res:Response): Promise<any> {
+    public async update(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
         await pool.query('UPDATE categoria SET ? WHERE idcategoria = ?'[req.body, id]);
-        res.json({message: "El categoria fue actualizado"});
+        res.json({ message: "El categoria fue actualizado" });
     }
 
     /**
@@ -52,10 +42,10 @@ class CategoriaController {
      * resive el identificador de la categoria atrabes de la ruta y elimina la categoria 
      * de la base de datos 
      */
-    public async Delete(req:Request,res:Request):Promise<void> {
+    public async Delete(req: Request, res: Request): Promise<void> {
         const { id } = req.params;
-        await pool.query('delete from worktogether.categoria where idcategoria =?',[id]);
-   }
+        await pool.query('delete from worktogether.comentario where idcomentarios =?', [id]);
+    }
 
 }
 

@@ -1,0 +1,7 @@
+{
+  "iddetalleproyecto": 0,
+  "nombreproyecto": "name",
+  "descripcion": "descripcion",
+  "alcance": "alcance",
+  "fechacreacion":"fecha creada por el sistema, este valor solo es para traer no para enviar y gual que el de iddetalle"
+}

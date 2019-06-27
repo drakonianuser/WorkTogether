@@ -41,8 +41,17 @@ class UsuarioController {
      */
     public async update(req:Request, res:Response): Promise<any> {
         const { id } = req.params;
-        await pool.query('UPDATE usuarios SET ? WHERE id = ?'[req.body, id]);
+        await pool.query('UPDATE usuarios SET ? WHERE idusuario = ?'[req.body, id]);
         res.json({message: "El usuario fue actualizado"});
+    }
+
+    /**
+     * Delete
+     */
+    public async Delete(req:Request, res:Response):Promise<void> {
+        const { id } = req.params;
+        await pool.query('delete * from usuarios where idusuario = ?', [id]);
+        res.json('usuario Eliminado');
     }
 
 }

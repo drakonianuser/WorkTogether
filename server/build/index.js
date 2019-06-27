@@ -14,6 +14,12 @@ const documentRoutes_1 = __importDefault(require("./routes/documentRoutes"));
 const usuarioRoutes_1 = __importDefault(require("./routes/usuarioRoutes"));
 const categoriasRoutes_1 = __importDefault(require("./routes/categoriasRoutes"));
 const detalleProyectoRoutes_1 = __importDefault(require("./routes/detalleProyectoRoutes"));
+const comentariosRoutes_1 = __importDefault(require("./routes/comentariosRoutes"));
+const publicacionesRoutes_1 = __importDefault(require("./routes/publicacionesRoutes"));
+const detallePublicacionesRoutes_1 = __importDefault(require("./routes/detallePublicacionesRoutes"));
+const imangenesRoutes_1 = __importDefault(require("./routes/imangenesRoutes"));
+const reportesRoutes_1 = __importDefault(require("./routes/reportesRoutes"));
+//import  from "./routes/";
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -42,6 +48,11 @@ class Server {
         this.app.use('/usuario', usuarioRoutes_1.default);
         this.app.use('/categoria', categoriasRoutes_1.default);
         this.app.use('/detallepro', detalleProyectoRoutes_1.default);
+        this.app.use('/comentarios', comentariosRoutes_1.default);
+        this.app.use('/pulicaciones', publicacionesRoutes_1.default);
+        this.app.use('/detallepu', detallePublicacionesRoutes_1.default);
+        this.app.use('/imagenes', imangenesRoutes_1.default);
+        this.app.use('/reportes', reportesRoutes_1.default);
     }
     //conecion
     start() {

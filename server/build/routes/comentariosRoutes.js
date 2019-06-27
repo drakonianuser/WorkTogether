@@ -11,8 +11,7 @@ class CategoriaRoutes {
         this.config();
     }
     config() {
-        this.router.get('/api/categorias', categoriasController_1.default.list);
-        this.router.get('/api/categorias/:id', categoriasController_1.default.one);
+        this.router.get('/api/categorias/:id', categoriasController_1.default.list);
         this.router.post('/api/categorias', categoriasController_1.default.create);
         this.router.put('/api/categorias/:id', categoriasController_1.default.update);
         this.router.delete('/api/categorias/:id', categoriasController_1.default.Delete);

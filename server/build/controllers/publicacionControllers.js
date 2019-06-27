@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class ProjectsController {
+class PublicacionController {
     constructor() {
     }
     list(req, res) {
@@ -20,8 +20,7 @@ class ProjectsController {
             const { idproyecto } = req.params;
             const publicaciones = yield database_1.default.query('SELECT * FROM publicaciones WHERE proyectos_idproyectos = ?'[idproyecto]);
             const detallepublicaciones = yield database_1.default.query('SELECT * FROM detalleproyecto where iddetallepublicacion = ?'[publicaciones.iddetallepublicacion]);
-            res.json(publicaciones);
-            res.json(detallepublicaciones);
+            res.json({ "publicacion": publicaciones, "detalle": detallepublicaciones });
         });
     }
     /**
@@ -29,8 +28,8 @@ class ProjectsController {
     */
     onepublicacion(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const project = yield database_1.default.query('SELECT * FROM detallepublicacion WHERE iddetallepublicacion = ?', [id]);
+            const { detalle } = req.params;
+            const project = yield database_1.default.query('SELECT * FROM detallepublicacion WHERE iddetallepublicacion = ?', [detalle]);
             if (project.length > 0) {
                 return res.json(project[0]);
             }
@@ -58,5 +57,5 @@ class ProjectsController {
         });
     }
 }
-const projectscontroller = new ProjectsController();
-exports.default = projectscontroller;
+const publicacionController = new PublicacionController();
+exports.default = publicacionController;

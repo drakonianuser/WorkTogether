@@ -14,6 +14,8 @@ class UsuarioRoutes {
         this.router.get('/api/usuario/:id', usuarioController.oneuser);
         this.router.post('/api/usuarios', usuarioController.create);
         this.router.put('/api/usuario/:id', usuarioController.update);
+        this.router.delete('/api/usuario/:id', usuarioController.Delete);
+        
     }
 }
 

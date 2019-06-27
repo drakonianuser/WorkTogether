@@ -50,8 +50,18 @@ class UsuarioController {
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('UPDATE usuarios SET ? WHERE id = ?'[req.body, id]);
+            yield database_1.default.query('UPDATE usuarios SET ? WHERE idusuario = ?'[req.body, id]);
             res.json({ message: "El usuario fue actualizado" });
+        });
+    }
+    /**
+     * Delete
+     */
+    Delete(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            yield database_1.default.query('delete * from usuarios where idusuario = ?', [id]);
+            res.json('usuario Eliminado');
         });
     }
 }

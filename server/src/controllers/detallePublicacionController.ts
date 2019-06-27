@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 
 import pool from "../database";
 
-class PublicacionController {
+class ProjectsController {
     constructor() {
 
     }
@@ -15,15 +15,15 @@ class PublicacionController {
     }
 
     /**
-     * oneproject
+     * one
     */
     public async onepublicacion(req: Request, res: Response): Promise<any> {
-        const { detalle } = req.params;
-        const project = await pool.query('SELECT * FROM detallepublicacion WHERE iddetallepublicacion = ?', [detalle]);
+        const { id } = req.params;
+        const project = await pool.query('SELECT * FROM detallepublicacion WHERE iddetallepublicacion = ?', [id]);
         if (project.length > 0) {
             return res.json(project[0]);
         }
-        res.status(404).json({ text: "El proyecto no existe" });
+        res.status(404).json({ text: "La publicacion  no existe" });
     }
 
     /**
@@ -31,8 +31,8 @@ class PublicacionController {
      */
     public async create(req: Request, res: Response): Promise<void> {
 
-        const estatus = await pool.query('INSERT INTO publicaciones ? vaules ?', [req.body]);
-        res.send("project create");
+        const estatus = await pool.query('INSERT INTO detallepublicacion ? vaules ?', [req.body]);
+        res.send("detallepublicacion create");
         res.json(estatus);
     }
 
@@ -42,11 +42,11 @@ class PublicacionController {
      */
     public async update(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
-        await pool.query('UPDATE proyectos SET ? WHERE id = ?'[req.body, id]);
-        res.json({ message: "El proyecto fue actualizado" });
+        await pool.query('UPDATE detallepublicacion SET ? WHERE iddetallepublicacion = ?'[req.body, id]);
+        res.json({ message: "El detallepublicacion fue actualizado" });
     }
 
 }
 
-const publicacionController = new PublicacionController();
-export default publicacionController;
+const projectscontroller = new ProjectsController();
+export default projectscontroller;

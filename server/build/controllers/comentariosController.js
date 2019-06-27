@@ -17,21 +17,9 @@ class CategoriaController {
     }
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const Categoria = yield database_1.default.query('SELECT * FROM categoria');
-            res.json(Categoria);
-        });
-    }
-    /**
-     * one
-    */
-    one(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const project = yield database_1.default.query('SELECT * FROM categoria WHERE idcategoria = ?', [id]);
-            if (project.length > 0) {
-                return res.json(project[0]);
-            }
-            res.status(404).json({ text: "la categoria no existe" });
+            const { iddocumento } = req.params;
+            const comentarios = yield database_1.default.query('SELECT * FROM comentarios where iddocumento = ? ', [iddocumento]);
+            res.json(comentarios);
         });
     }
     /**
@@ -41,8 +29,8 @@ class CategoriaController {
      */
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO categoria set ?', [req.body]);
-            res.send("categoria create");
+            yield database_1.default.query('INSERT INTO comentarios set ?', [req.body]);
+            res.send("comentario create");
         });
     }
     /**
@@ -66,7 +54,7 @@ class CategoriaController {
     Delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('delete from worktogether.categoria where idcategoria =?', [id]);
+            yield database_1.default.query('delete from worktogether.comentario where idcomentarios =?', [id]);
         });
     }
 }

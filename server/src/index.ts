@@ -10,6 +10,14 @@ import documentRoutes from "./routes/documentRoutes";
 import usuarioRoutes from "./routes/usuarioRoutes";
 import categoriaRutes from "./routes/categoriasRoutes";
 import detalleProyectoRoutes from "./routes/detalleProyectoRoutes";
+import comentariosRoutes from "./routes/comentariosRoutes";
+import publicacionesRoutes from "./routes/publicacionesRoutes";
+import detallePublicacionesRoutes from "./routes/detallePublicacionesRoutes";
+import imagenesRoutes from "./routes/imangenesRoutes";
+import reportesRoutes from "./routes/reportesRoutes";
+//import  from "./routes/";
+
+
 
 
 class Server {
@@ -44,7 +52,12 @@ class Server {
         this.app.use('/document',documentRoutes);
         this.app.use('/usuario',usuarioRoutes);
         this.app.use('/categoria',categoriaRutes);
-        this.app.use('/detallepro',detalleProyectoRoutes)
+        this.app.use('/detallepro',detalleProyectoRoutes);
+        this.app.use('/comentarios',comentariosRoutes);
+        this.app.use('/pulicaciones', publicacionesRoutes);
+        this.app.use('/detallepu',detallePublicacionesRoutes);
+        this.app.use('/imagenes',imagenesRoutes);
+        this.app.use('/reportes',reportesRoutes);
         
     }
     

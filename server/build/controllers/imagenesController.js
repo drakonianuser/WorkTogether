@@ -12,22 +12,39 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class CategoriaController {
+class ImagenesController {
     constructor() {
     }
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const Categoria = yield database_1.default.query('SELECT * FROM categoria');
-            res.json(Categoria);
+            const imagen = yield database_1.default.query('SELECT * FROM imagen');
+            res.json(imagen);
         });
     }
     /**
-     * one
+     * oneproyectoImagens
+     * este metodo espara traer todas las imagens relacionadas con un proyecto y resive atraves
+     * de la ruta el id del proyecto
     */
-    one(req, res) {
+    oneproyectoImagens(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const project = yield database_1.default.query('SELECT * FROM categoria WHERE idcategoria = ?', [id]);
+            const project = yield database_1.default.query('SELECT * FROM imagen WHERE iddocumentacion = ?', [id]);
+            if (project.length > 0) {
+                return res.json(project[0]);
+            }
+            res.status(404).json({ text: "la categoria no existe" });
+        });
+    }
+    /**
+     * oneImagen
+     * este metodo espara traer solo una imagen y resive como parametro el id de la imagen
+     * atraves de la ruta
+    */
+    oneImagens(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const project = yield database_1.default.query('SELECT * FROM imagen WHERE idimagen = ?', [id]);
             if (project.length > 0) {
                 return res.json(project[0]);
             }
@@ -47,28 +64,27 @@ class CategoriaController {
     }
     /**
      * update
-     * este metodo espara corregir alguna categoria
-     * resive el identificador atrabes de la ruta y el json con el nombre de la categoria corregido
+     * este metodo espara cambiar una imagen
+     * resive el id de la imagen anterior para remplasarla en el mismo espacio
      */
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('UPDATE categoria SET ? WHERE idcategoria = ?'[req.body, id]);
-            res.json({ message: "El categoria fue actualizado" });
+            yield database_1.default.query('UPDATE imagen SET ? WHERE idimagen = ?'[req.body, id]);
+            res.json({ message: "la imagen fue actualizado" });
         });
     }
     /**
      * Delete
-     * este metodo esta para eliminar una categoria en caso de que esta no sea de utilidad
-     * resive el identificador de la categoria atrabes de la ruta y elimina la categoria
-     * de la base de datos
+     * este metodo esta para eliminar una imagen
+     * resive el id de la imagen para eliminarla
      */
     Delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('delete from worktogether.categoria where idcategoria =?', [id]);
+            yield database_1.default.query('delete from worktogether.imagen where idmagen =?', [id]);
         });
     }
 }
-const categoriaController = new CategoriaController();
-exports.default = categoriaController;
+const imagenesController = new ImagenesController();
+exports.default = imagenesController;

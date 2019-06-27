@@ -10,8 +10,7 @@ class ProjectsController {
     public async list(req: Request, res: Response) {
         const projects = await pool.query('SELECT * FROM proyectos');
         const detalleprojects = await pool.query('SELECT * FROM detalleproyecto');
-        res.json(projects);
-        res.json(detalleprojects);
+        res.json({"proyect":projects, "detalle":detalleprojects});
     }
 
     /**
