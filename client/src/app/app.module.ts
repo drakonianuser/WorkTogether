@@ -25,6 +25,7 @@ const routes: Route[]=[
   {path: 'proyecto', component: VistaProyectoComponent},
   {path: 'registro', component: RegistroComponent},
   {path: 'recuperar', component: RecuperarContra1Component},
+  {path: 'recuperar2', component: RecuperarContra2Component},
   {path: 'actualizar', component: ActualizarProyectoComponent},
   {path: 'CrearProyecto', component: CrearProyectoComponent},
   {path: 'editar', component: EditarPerfilComponent}

@@ -1,0 +1,39 @@
+.letras{
+
+    font: 400% serif;
+    color:rgba(255,255,255,0.8);
+
+}
+.contlogin{
+
+    background: rgba(255,255,255,0.3);
+    height: 400px;
+
+}
+.palabras{
+
+    font: 110% serif;
+    color:rgba(255, 255, 255, 0.8);
+
+}
+.boton{
+
+	font:bold 90% Verdana;
+	text-decoration: none;
+    color: rgba(255,255,255,0.6);
+    background:rgba(8, 8, 8, 0.8);
+	transition:background 1s;
+}
+.boton:hover{
+
+	background:white;
+	color:rgba(8, 8, 8, 0.6);
+
+}
+.link{
+
+    text-decoration: none;
+    font: 110% serif;
+    color:rgba(255,255,255,0.6);
+
+}

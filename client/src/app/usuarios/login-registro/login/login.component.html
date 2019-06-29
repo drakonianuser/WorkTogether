@@ -1,10 +1,86 @@
-<a routerLink="/">Logo</a>
+<!--
 <br>
 <a routerLink="/">Inicio</a>
 <br>
-<a routerLink="/registro">Registrarse</a>
+
 <br>
-<a routerLink="/recuperar">Recuperar Contraseña</a>
+
 <p>
   login works!
-</p>
+</p>-->
+
+<div class="container-fluid">
+
+  <div class="row" style="height:100px; background-image: url('D:\Brandon\workTogueter\l6.jpg')">
+      <a class="text-hide"  routerLink="/">Logo</a>
+  </div>
+  <div class="row justify-content-center"><h6 class="letras">Login</h6></div>
+  <div class="row justify-content-center" >
+    <div class="col-4 contlogin" >
+      <div class="row" style="height:65px">
+
+      </div>
+      <div class="row justify-content-center pt-3 pb-3">
+        <div class="col-8">
+          <p class="palabras">Email</p>
+        </div>
+        <div class="col-8">
+          <input class="form-control" id="email" placeholder="Email">
+        </div>
+      </div>
+      <div class="row justify-content-center pb-4">
+        <div class="col-8">
+            <p class="palabras">Contraseña</p>
+        </div>
+        <div class="col-8">
+            <input type="password" class="form-control" id="contraseña" placeholder="Contraseña">
+        </div>              
+      </div>
+      <div class="row justify-content-center pb-4">
+          <a class="px-3 py-2 boton" href="#">Enviar</a>
+      </div>
+      <div class="row">
+        <div class="col-6 pl-5">
+          <p class="palabras">¿No tienes cuenta?</p>
+        </div>
+        <div class="col-1 ">
+            <a class="link" routerLink="/registro">Registrarse</a>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-7 pl-5">
+            <p class="palabras">¿No recuerdas tu conraseña?</p>
+          </div>
+          <div class="col-1">
+              <a class="link" routerLink="/recuperar">Recuperar</a>
+          </div>
+        </div>
+    </div>
+    
+  </div>
+      
+      <!--<div class="row justify-content-center align-items-center" style="height:400px;">
+          <div class="col-4 bg-dark" style="height:400px">
+      
+              <form class="bg-primary justify-content-center">
+                  <div class="form-group col-7">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    
+                  </div>
+                  <div class="form-group col-7 bg-success">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  </div>
+                  <button class="btn btn-primary">Enviar</button>
+              </form>
+      
+          </div>
+      </div>-->
+      
+
+</div>
+  
+
+
+
