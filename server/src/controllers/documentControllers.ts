@@ -33,6 +33,7 @@ class DocumentController {
         res.send("document create");
     }
     
+    
     /**
      * update
      */
@@ -42,3 +43,6 @@ class DocumentController {
         res.json({message: "El proyecto fue actualizado"});
     }
 }
+
+const documentController = new DocumentController();
+export default documentController;

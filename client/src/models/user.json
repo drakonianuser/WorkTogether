@@ -1,0 +1,8 @@
+{
+  "idusuarios": 0,
+  "nombre": "name",
+  "apellidos": "last name",
+  "correo": "email",
+  "contraseña": "password",
+  "tipousuario": "User"
+}

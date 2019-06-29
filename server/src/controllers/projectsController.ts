@@ -9,7 +9,8 @@ class ProjectsController {
 
     public async list(req: Request, res: Response) {
         const projects = await pool.query('SELECT * FROM proyectos');
-        res.json(projects);
+        const detalleprojects = await pool.query('SELECT * FROM detalleproyecto');
+        res.json({"proyect":projects, "detalle":detalleprojects});
     }
 
     /**
@@ -17,7 +18,7 @@ class ProjectsController {
     */
     public async oneproject(req: Request, res: Response): Promise<any> {
         const { id }= req.params;
-        const project = await pool.query('SELECT * FROM proyectos WHERE id = ?',[id]);
+        const project = await pool.query('SELECT * FROM detalleproyecto WHERE iddetalleproyecto = ?',[id]);
         if  (project.length > 0){
              return res.json(project[0]); 
         }
@@ -28,18 +29,12 @@ class ProjectsController {
      * create 
      */
     public async create (req:Request, res: Response): Promise<void>{
+        console.log(req.body);
         await pool.query('INSERT INTO proyectos set ?', [req.body]);
+        
         res.send("project create");
     }
 
-    /**
-     * delete
-     */
-    public async delete(req: Request, res: Response): Promise<void> {
-        const {id} = req.params;
-        await pool.query('DELETE FORM proyectos WHERE id = ?'[id]);
-        res.json({message : "El proyecto fue eliminado"});
-    }
 
     /**
      * update

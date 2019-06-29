@@ -14,7 +14,6 @@ class ProjectRoutes {
         this.router.get('/api/proyectos', projectsController_1.default.list);
         this.router.get('/api/proyectos/:id', projectsController_1.default.oneproject);
         this.router.post('/api/proyectos', projectsController_1.default.create);
-        this.router.delete('/api/proyectos/:id', projectsController_1.default.delete);
         this.router.put('/api/proyectos/:id', projectsController_1.default.update);
     }
 }
