@@ -9,31 +9,31 @@
 #fila{
 
     background: rgba(255,255,255,0.5);
-    height:300px;
-    align-items: center;
-    justify-content: center;
-
-
-}
-#foros{
-    
-	font:bold 90% Verdana;
-	text-decoration: none;
-    color: #ffffff;
-    background: black;
-	/*border-radius: 60px;*/
-	padding: 17% 42% 17% 42%;
-	transition:background 1s;
-}
-#foros:hover{
-
-	background:rgba(0,0,0,0.3);
-	color:white;
+ 
 
 }
 .letras{
 
     font: 500% serif;
     color:rgba(255,255,255,0.8);
+
+}
+.fondo{
+
+    background: rgba(0,0,0);
+
+}
+.link{
+
+	font:bold 90% Verdana;
+	text-decoration: none;
+    color: rgba(255,255,255,0.6);
+    background:rgba(0, 0, 0);
+	transition:background 1s;
+}
+.link:hover{
+
+	background:white;
+	color:rgba(8, 8, 8, 0.6);
 
 }
