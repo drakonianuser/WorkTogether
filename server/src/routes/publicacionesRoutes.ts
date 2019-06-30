@@ -10,11 +10,11 @@ class PublicacionRoutes {
     }
 
     config(): void {
-        this.router.get('/api/publicaciones/:idproyecto', publicacionController.list);
-        this.router.get('/api/publicacion/:idproyecto/:detalle', publicacionController.onepublicacion);
-        this.router.post('/api/publicacion', publicacionController.create);
-        this.router.put('/api/publicacion/:id', publicacionController.update);
-        this.router.delete('/api/publicacion/:idpublicaciones', publicacionController.Delete);
+        this.router.get('/api/:idproyecto', publicacionController.list);
+        this.router.get('/api/:idproyecto/:detalle', publicacionController.onepublicacion);
+        this.router.post('/api/', publicacionController.create);
+        this.router.put('/api/:id', publicacionController.update);
+        this.router.delete('/api/:idpublicaciones', publicacionController.Delete);
 
     }
 }

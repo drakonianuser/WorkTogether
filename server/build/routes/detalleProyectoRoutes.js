@@ -11,10 +11,10 @@ class DetalleProyectoRoutes {
         this.config();
     }
     config() {
-        this.router.get('/api/detallePro', detalleProyectoController_1.default.list);
-        this.router.get('/api/detallePro/:id', detalleProyectoController_1.default.one);
-        this.router.post('/api/detallePro', detalleProyectoController_1.default.create);
-        this.router.put('/api/detallePro/:id', detalleProyectoController_1.default.update);
+        this.router.get('/api/', detalleProyectoController_1.default.list);
+        this.router.get('/api/:id', detalleProyectoController_1.default.one);
+        this.router.post('/api/', detalleProyectoController_1.default.create);
+        this.router.put('/api/:id', detalleProyectoController_1.default.update);
     }
 }
 const detalleProyectoRoutes = new DetalleProyectoRoutes();

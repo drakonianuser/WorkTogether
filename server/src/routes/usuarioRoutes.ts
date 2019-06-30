@@ -10,11 +10,11 @@ class UsuarioRoutes {
     }
 
     config(): void {
-        this.router.get('/api/usuarios', usuarioController.list);
-        this.router.get('/api/usuario/:id', usuarioController.oneuser);
-        this.router.post('/api/usuarios', usuarioController.create);
-        this.router.put('/api/usuario/:id', usuarioController.update);
-        this.router.delete('/api/usuario/:id', usuarioController.Delete);
+        this.router.get('/api/', usuarioController.list);
+        this.router.get('/api/:id', usuarioController.oneuser);
+        this.router.post('/api/', usuarioController.create);
+        this.router.put('/api/:id', usuarioController.update);
+        this.router.delete('/api/:id', usuarioController.Delete);
         
     }
 }

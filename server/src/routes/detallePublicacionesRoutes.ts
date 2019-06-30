@@ -10,10 +10,10 @@ class DetallePublicacionRoutes {
     }
 
     config(): void {
-        this.router.get('/api/detallepu/:idproyecto', detallePublicacionController.list);
-        this.router.get('/api/detallepu/:id/:detalle', detallePublicacionController.onepublicacion);
-        this.router.post('/api/detallepu', detallePublicacionController.create);
-        this.router.put('/api/detallepu/:id', detallePublicacionController.update);
+        this.router.get('/api/:idproyecto', detallePublicacionController.list);
+        this.router.get('/api/:id/:detalle', detallePublicacionController.onepublicacion);
+        this.router.post('/api/', detallePublicacionController.create);
+        this.router.put('/api/:id', detallePublicacionController.update);
     }
 }
 

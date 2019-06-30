@@ -10,12 +10,12 @@ class ImagenesRoutes {
     }
 
     config(): void {
-        this.router.get('/api/imagenes', imagenesController.list);
-        this.router.get('/api/imagenes/:iddocument', imagenesController.oneproyectoImagens);
-        this.router.get('/api/imagen/:idimagen',imagenesController.oneImagens);
-        this.router.post('/api/imagen', imagenesController.create);
-        this.router.put('/api/imagen/:id', imagenesController.update);
-        this.router.delete('/api/imagen/:id', imagenesController.Delete);
+        this.router.get('/api/', imagenesController.list);
+        this.router.get('/api/:iddocument', imagenesController.oneproyectoImagens);
+        this.router.get('/api/:idimagen',imagenesController.oneImagens);
+        this.router.post('/api/', imagenesController.create);
+        this.router.put('/api/:id', imagenesController.update);
+        this.router.delete('/api/:id', imagenesController.Delete);
     }
 }
 
