@@ -8,8 +8,8 @@ class DocumentController {
     }
 
     public async list(req: Request, res: Response){
-        const { id_proyect } = req.params;
-        const documents = await pool.query('SELECT * FROM documentacion WHERE publicaciones_idpublicaciones = ?',[id_proyect] );
+        const { idproyecto } = req.params;
+        const documents = await pool.query('SELECT * FROM documentacion WHERE publicaciones_idpublicaciones = ?',[idproyecto] );
         res.json(documents);
     }
 
@@ -17,8 +17,8 @@ class DocumentController {
      * onedocument
      */
     public async onedocument(req: Request, res: Response): Promise<any> {
-        const { id_proyect, id_document } = req.params;
-        const document = await pool.query('SELECT * FROM documentacion WHERE publicaciones_idpublicaciones = ? , iddocumentacion = ? ',[id_proyect , id_document]);
+        const {  idDocumento } = req.params;
+        const document = await pool.query('SELECT * FROM documentacion WHERE iddocumentacion = ? ', [ idDocumento]);
         if (document.length > 0) {
             return res.json(document[0]);
         };
@@ -38,8 +38,8 @@ class DocumentController {
      * update
      */
     public async update(req: Request, res: Response): Promise<any> {
-        const { id_proyect, id_document } = req.params;
-        await pool.query('UPDATE documentacion SET ? WHERE id = ? ',[req.body, id_proyect, id_document ]);
+        const { iddocumentacion } = req.params;
+        await pool.query('UPDATE documentacion SET ? WHERE iddocumentacion = ? ', [req.body, iddocumentacion ]);
         res.json({message: "El proyecto fue actualizado"});
     }
 }

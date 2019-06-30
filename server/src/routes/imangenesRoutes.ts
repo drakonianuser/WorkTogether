@@ -11,7 +11,7 @@ class ImagenesRoutes {
 
     config(): void {
         this.router.get('/api/', imagenesController.list);
-        this.router.get('/api/:iddocument', imagenesController.oneproyectoImagens);
+        this.router.get('/api/d/:iddocument', imagenesController.oneproyectoImagens);
         this.router.get('/api/:idimagen',imagenesController.oneImagens);
         this.router.post('/api/', imagenesController.create);
         this.router.put('/api/:id', imagenesController.update);

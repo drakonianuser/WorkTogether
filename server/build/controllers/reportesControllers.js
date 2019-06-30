@@ -52,7 +52,7 @@ class ReportesController {
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('UPDATE reporte SET ? WHERE idreporte = ?'[req.body, id]);
+            yield database_1.default.query('UPDATE reportes SET ? WHERE idreportes = ?', [req.body, id]);
             res.json({ message: "El reporte fue actualizado" });
         });
     }
@@ -65,6 +65,7 @@ class ReportesController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             yield database_1.default.query('delete from worktogether.reportes where idreporte =?', [id]);
+            res.json({ message: "reporte eliminado" });
         });
     }
 }

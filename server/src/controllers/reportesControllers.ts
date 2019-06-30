@@ -41,7 +41,7 @@ class ReportesController {
      */
     public async update(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
-        await pool.query('UPDATE reporte SET ? WHERE idreporte = ?'[req.body, id]);
+        await pool.query('UPDATE reportes SET ? WHERE idreportes = ?',[req.body, id]);
         res.json({ message: "El reporte fue actualizado" });
     }
 
@@ -50,9 +50,10 @@ class ReportesController {
      * este metodo esta para eliminar un reporte. 
      * este resive el id del reporte 
      */
-    public async Delete(req: Request, res: Request): Promise<void> {
+    public async Delete(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
         await pool.query('delete from worktogether.reportes where idreporte =?', [id]);
+        res.json({message:"reporte eliminado"});
     }
 
 }

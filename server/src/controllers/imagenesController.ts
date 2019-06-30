@@ -18,12 +18,12 @@ class ImagenesController {
      * de la ruta el id del proyecto
     */
     public async oneproyectoImagens(req: Request, res: Response): Promise<any> {
-        const { id } = req.params;
-        const project = await pool.query('SELECT * FROM imagen WHERE iddocumentacion = ?', [id]);
+        const { iddocument } = req.params;
+        const project = await pool.query('SELECT * FROM imagen WHERE iddocumentacion = ?', [iddocument]);
         if (project.length > 0) {
-            return res.json(project[0]);
+            return res.json(project);
         }
-        res.status(404).json({ text: "la categoria no existe" });
+        res.status(404).json({ text: "El documento no tiene imagens o no existe" });
     }
 
     /**
@@ -32,12 +32,12 @@ class ImagenesController {
      * atraves de la ruta 
     */
     public async oneImagens(req: Request, res: Response): Promise<any> {
-        const { id } = req.params;
-        const project = await pool.query('SELECT * FROM imagen WHERE idimagen = ?', [id]);
+        const { idimagen } = req.params;
+        const project = await pool.query('SELECT * FROM imagen WHERE idimagen = ?', [idimagen]);
         if (project.length > 0) {
             return res.json(project[0]);
         }
-        res.status(404).json({ text: "la categoria no existe" });
+        res.status(404).json({ text: "la imagen no existe" });
     }
 
     /**
@@ -46,8 +46,8 @@ class ImagenesController {
      * resive el nombre de la nueva categoria atrabes de un json 
      */
     public async create(req: Request, res: Response): Promise<void> {
-        await pool.query('INSERT INTO categoria set ?', [req.body]);
-        res.send("categoria create");
+        await pool.query('INSERT INTO imagen set ?', [req.body]);
+        res.send("imagen create");
     }
 
 
@@ -67,9 +67,10 @@ class ImagenesController {
      * este metodo esta para eliminar una imagen 
      * resive el id de la imagen para eliminarla 
      */
-    public async Delete(req: Request, res: Request): Promise<void> {
+    public async Delete(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
-        await pool.query('delete from worktogether.imagen where idmagen =?', [id]);
+        await pool.query('delete from worktogether.imagen where idimagen =?', [id]);
+        res.json({menssage:"imagen eliminada"});
     }
 
 }

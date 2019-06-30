@@ -4,18 +4,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const categoriasController_1 = __importDefault(require("../controllers/categoriasController"));
-class CategoriaRoutes {
+const ComentariosController_1 = __importDefault(require("../controllers/ComentariosController"));
+class ComentariosRoutes {
     constructor() {
         this.router = express_1.Router();
         this.config();
     }
     config() {
-        this.router.get('/api/:id', categoriasController_1.default.list);
-        this.router.post('/api/', categoriasController_1.default.create);
-        this.router.put('/api/:id', categoriasController_1.default.update);
-        this.router.delete('/api/:id', categoriasController_1.default.Delete);
+        this.router.get('/api/:id', ComentariosController_1.default.list);
+        this.router.post('/api/', ComentariosController_1.default.create);
+        this.router.put('/api/:id', ComentariosController_1.default.update);
+        this.router.delete('/api/:id', ComentariosController_1.default.Delete);
     }
 }
-const categoriaRoutes = new CategoriaRoutes();
-exports.default = categoriaRoutes.router;
+const comentariosRoutes = new ComentariosRoutes();
+exports.default = comentariosRoutes.router;

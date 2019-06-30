@@ -10,12 +10,6 @@
     
 
 }
-.palabras{
-
-    font: 110% serif;
-    color:rgba(255, 255, 255, 0.6);
-
-}
 .boton{
 
 	font:bold 90% Verdana;
@@ -28,12 +22,5 @@
 
 	background:white;
 	color:rgba(8, 8, 8, 0.6);
-
-}
-.link{
-
-    text-decoration: none;
-    font: 110% serif;
-    color:rgb(0,0,0);
 
 }

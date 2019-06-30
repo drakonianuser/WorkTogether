@@ -12,13 +12,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class CategoriaController {
+class ComentariosController {
     constructor() {
     }
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { iddocumento } = req.params;
-            const comentarios = yield database_1.default.query('SELECT * FROM comentarios where iddocumento = ? ', [iddocumento]);
+            //const comentarios = await pool.query('SELECT * FROM comentarios where iddocumento = ? ',[iddocumento]);
+            const comentarios = yield database_1.default.query('SELECT * FROM comentarios ');
             res.json(comentarios);
         });
     }
@@ -29,20 +30,20 @@ class CategoriaController {
      */
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO comentarios set ?', [req.body]);
+            yield database_1.default.query('INSERT INTO comentarios SET ?', [req.body]);
             res.send("comentario create");
         });
     }
     /**
      * update
-     * este metodo espara corregir alguna categoria
+     * este metodo espara corregir alguna comentarios
      * resive el identificador atrabes de la ruta y el json con el nombre de la categoria corregido
      */
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('UPDATE categoria SET ? WHERE idcategoria = ?'[req.body, id]);
-            res.json({ message: "El categoria fue actualizado" });
+            yield database_1.default.query('UPDATE comentarios SET ? WHERE idcomentarios = ?', [req.body, id]);
+            res.json({ message: "El comentarios fue actualizado" });
         });
     }
     /**
@@ -58,5 +59,5 @@ class CategoriaController {
         });
     }
 }
-const categoriaController = new CategoriaController();
-exports.default = categoriaController;
+const comentariosController = new ComentariosController();
+exports.default = comentariosController;
