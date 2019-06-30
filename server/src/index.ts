@@ -49,7 +49,7 @@ class Server {
     routes(): void {
         this.app.use('/',indexRoutes);
         this.app.use('/projects',projectRoutes);
-        this.app.use('/document',documentRoutes);
+        this.app.use('/documentacion',documentRoutes);
         this.app.use('/usuario',usuarioRoutes);
         this.app.use('/categoria',categoriaRutes);
         this.app.use('/detallepro',detalleProyectoRoutes);

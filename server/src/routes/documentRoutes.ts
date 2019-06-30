@@ -1,23 +1,23 @@
 import { Router } from "express";
 
-import  documentControllers  from "../controllers/documentControllers";
+import documentControllers from "../controllers/documentControllers";
 
 class DocumentRoutes {
-    
+
     public router: Router = Router();
 
-    constructor(){
-        
+    constructor() {
+        this.config();
     }
 
     /**
      *config 
      */
-     config ():void {
-        this.router.get('/api/:idproyeto',documentControllers.list);
-        this.router.get('/api/:idproyecto/:idDocumento',documentControllers.onedocument);
-        this.router.post('/api/:idproyecto',documentControllers.Create);
-        this.router.put('/api/:idproyecto/:idDocument',documentControllers.update);
+    config(): void {
+        this.router.get('/api/:idproyecto', documentControllers.list);
+        this.router.get('/api/:idproyecto/:idDocumento', documentControllers.onedocument);
+        this.router.post('/api/', documentControllers.Create);
+        this.router.put('/api/:iddocumentacion', documentControllers.update);
     }
 
 }

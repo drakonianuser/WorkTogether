@@ -18,9 +18,15 @@ class ProjectsController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idproyecto } = req.params;
-            const publicaciones = yield database_1.default.query('SELECT * FROM publicaciones WHERE proyectos_idproyectos = ?'[parseInt(idproyecto)]);
-            const detallepublicaciones = yield database_1.default.query('SELECT * FROM detalleproyecto where iddetallepublicacion = ?'[publicaciones.iddetallepublicacion]);
-            res.json({ "publicacion": publicaciones, "detalle": detallepublicaciones });
+            const publicaciones = yield database_1.default.query('SELECT * FROM publicaciones WHERE proyectos_idproyectos = ?', [idproyecto]);
+            const j = publicaciones;
+            let detallers = new Array(j.length);
+            for (let index = 0; index < j.length; index++) {
+                const element = j[index];
+                const de = yield database_1.default.query('SELECT * FROM detallepublicacion where iddetallepublicacion = ?', [element['detallepublicacion_iddetallepublicacion']]);
+                detallers[index] = de[0];
+            }
+            res.json({ "publicacion": publicaciones, "detalles": detallers });
         });
     }
     /**
