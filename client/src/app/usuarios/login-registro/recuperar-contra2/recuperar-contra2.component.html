@@ -1,5 +1,40 @@
-<a routerLink="/">Logo</a>
+<!--<a routerLink="/">Logo</a>
 <a routerLink="/">Cambiar Contraseña</a> 
 <p>
   recuperar-contra2 works!
-</p>
+</p>-->
+
+<div class="container-fluid">
+
+  <div class="row" style="height:100px;">
+      <a class="text-hide"  routerLink="/">Recuperar</a>
+  </div>
+  <div class="row justify-content-center"><h6 class="letras">Recuperar</h6></div>
+  <div class="row justify-content-center" >
+    <div class="col-4 contlogin" >
+      <div class="row" style="height:65px">
+
+      </div>
+      <div class="row justify-content-center pt-3 pb-3">
+        <div class="col-8">
+          <p class="palabras">Nueva Contraseña</p>
+        </div>
+        <div class="col-8">
+          <input class="form-control" id="email" placeholder="Nueva Contraseña">
+        </div>
+      </div>
+      <div class="row justify-content-center pb-4">
+        <div class="col-8">
+            <p class="palabras">Confirmar Contraseña</p>
+        </div>
+        <div class="col-8">
+            <input type="password" class="form-control" id="contraseña" placeholder="Confirmar Contraseña">
+        </div>              
+      </div>
+      <div class="row justify-content-center pb-4">
+          <a class="px-3 py-2 boton"  routerLink="/recuperar2">Recuperar</a>
+      </div>
+    </div>
+    
+  </div>
+</div>
