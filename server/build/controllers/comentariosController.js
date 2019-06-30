@@ -12,13 +12,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class CategoriaController {
+class ComentariosController {
     constructor() {
     }
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { iddocumento } = req.params;
-            const comentarios = yield database_1.default.query('SELECT * FROM comentarios where iddocumento = ? ', [iddocumento]);
+            //const comentarios = await pool.query('SELECT * FROM comentarios where iddocumento = ? ',[iddocumento]);
+            const comentarios = yield database_1.default.query('SELECT * FROM comentarios ');
             res.json(comentarios);
         });
     }
@@ -58,5 +59,5 @@ class CategoriaController {
         });
     }
 }
-const categoriaController = new CategoriaController();
-exports.default = categoriaController;
+const comentariosController = new ComentariosController();
+exports.default = comentariosController;

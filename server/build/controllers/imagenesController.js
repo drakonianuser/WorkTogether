@@ -28,12 +28,12 @@ class ImagenesController {
     */
     oneproyectoImagens(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const project = yield database_1.default.query('SELECT * FROM imagen WHERE iddocumentacion = ?', [id]);
+            const { iddocument } = req.params;
+            const project = yield database_1.default.query('SELECT * FROM imagen WHERE iddocumentacion = ?', [iddocument]);
             if (project.length > 0) {
-                return res.json(project[0]);
+                return res.json(project);
             }
-            res.status(404).json({ text: "la categoria no existe" });
+            res.status(404).json({ text: "El documento no tiene imagens o no existe" });
         });
     }
     /**
@@ -43,12 +43,12 @@ class ImagenesController {
     */
     oneImagens(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const project = yield database_1.default.query('SELECT * FROM imagen WHERE idimagen = ?', [id]);
+            const { idimagen } = req.params;
+            const project = yield database_1.default.query('SELECT * FROM imagen WHERE idimagen = ?', [idimagen]);
             if (project.length > 0) {
                 return res.json(project[0]);
             }
-            res.status(404).json({ text: "la categoria no existe" });
+            res.status(404).json({ text: "la imagen no existe" });
         });
     }
     /**
@@ -58,8 +58,8 @@ class ImagenesController {
      */
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO categoria set ?', [req.body]);
-            res.send("categoria create");
+            yield database_1.default.query('INSERT INTO imagen set ?', [req.body]);
+            res.send("imagen create");
         });
     }
     /**
@@ -82,7 +82,8 @@ class ImagenesController {
     Delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('delete from worktogether.imagen where idmagen =?', [id]);
+            yield database_1.default.query('delete from worktogether.imagen where idimagen =?', [id]);
+            res.json({ menssage: "imagen eliminada" });
         });
     }
 }

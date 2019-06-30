@@ -52,9 +52,10 @@ class CategoriaController {
      * resive el identificador de la categoria atrabes de la ruta y elimina la categoria 
      * de la base de datos 
      */
-    public async Delete(req:Request,res:Request):Promise<void> {
+    public async Delete(req:Request,res:Response):Promise<void> {
         const { id } = req.params;
         await pool.query('delete from worktogether.categoria where idcategoria =?',[id]);
+        res.json({message:"categoria eliminada"});
    }
 
 }

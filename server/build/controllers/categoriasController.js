@@ -67,6 +67,7 @@ class CategoriaController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             yield database_1.default.query('delete from worktogether.categoria where idcategoria =?', [id]);
+            res.json({ message: "categoria eliminada" });
         });
     }
 }

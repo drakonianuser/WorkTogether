@@ -2,14 +2,15 @@ import { Request, Response } from "express";
 
 import pool from "../database";
 
-class CategoriaController {
+class ComentariosController {
     constructor() {
 
     }
 
     public async list(req: Request, res: Response) {
         const { iddocumento } = req.params;
-        const comentarios = await pool.query('SELECT * FROM comentarios where iddocumento = ? ',[iddocumento]);
+        //const comentarios = await pool.query('SELECT * FROM comentarios where iddocumento = ? ',[iddocumento]);
+        const comentarios = await pool.query('SELECT * FROM comentarios ');
         res.json(comentarios);
     }
 
@@ -42,12 +43,12 @@ class CategoriaController {
      * resive el identificador de la categoria atrabes de la ruta y elimina la categoria 
      * de la base de datos 
      */
-    public async Delete(req: Request, res: Request): Promise<void> {
+    public async Delete(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
         await pool.query('delete from worktogether.comentario where idcomentarios =?', [id]);
     }
 
 }
 
-const categoriaController = new CategoriaController();
-export default categoriaController;
+const comentariosController = new ComentariosController();
+export default comentariosController;

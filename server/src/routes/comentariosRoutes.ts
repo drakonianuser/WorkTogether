@@ -1,8 +1,8 @@
 import { Router } from "express";
 
-import categoriaController from "../controllers/categoriasController";
+import ComentariosController from "../controllers/ComentariosController";
 
-class CategoriaRoutes {
+class ComentariosRoutes {
 
     public router: Router = Router();
     constructor() {
@@ -10,12 +10,12 @@ class CategoriaRoutes {
     }
 
     config(): void {
-        this.router.get('/api/:id', categoriaController.list);
-        this.router.post('/api/', categoriaController.create);
-        this.router.put('/api/:id', categoriaController.update);
-        this.router.delete('/api/:id', categoriaController.Delete);
+        this.router.get('/api/:id', ComentariosController.list);
+        this.router.post('/api/', ComentariosController.create);
+        this.router.put('/api/:id', ComentariosController.update);
+        this.router.delete('/api/:id', ComentariosController.Delete);
     }
 }
 
-const categoriaRoutes = new CategoriaRoutes();
-export default categoriaRoutes.router;
+const comentariosRoutes = new ComentariosRoutes();
+export default comentariosRoutes.router;
