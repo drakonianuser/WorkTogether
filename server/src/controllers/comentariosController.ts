@@ -20,20 +20,20 @@ class CategoriaController {
      * resive el nombre de la nueva categoria atrabes de un json 
      */
     public async create(req: Request, res: Response): Promise<void> {
-        await pool.query('INSERT INTO comentarios set ?', [req.body]);
+        await pool.query('INSERT INTO comentarios SET ?', [req.body]);
         res.send("comentario create");
     }
 
 
     /**
      * update
-     * este metodo espara corregir alguna categoria
+     * este metodo espara corregir alguna comentarios
      * resive el identificador atrabes de la ruta y el json con el nombre de la categoria corregido 
      */
     public async update(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
-        await pool.query('UPDATE categoria SET ? WHERE idcategoria = ?'[req.body, id]);
-        res.json({ message: "El categoria fue actualizado" });
+        await pool.query('UPDATE comentarios SET ? WHERE idcomentarios = ?',[req.body, id]);
+        res.json({ message: "El comentarios fue actualizado" });
     }
 
     /**

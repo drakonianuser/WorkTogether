@@ -8,15 +8,16 @@ const documentControllers_1 = __importDefault(require("../controllers/documentCo
 class DocumentRoutes {
     constructor() {
         this.router = express_1.Router();
+        this.config();
     }
     /**
      *config
      */
     config() {
-        this.router.get('/api/:idproyeto', documentControllers_1.default.list);
+        this.router.get('/api/:idproyecto', documentControllers_1.default.list);
         this.router.get('/api/:idproyecto/:idDocumento', documentControllers_1.default.onedocument);
-        this.router.post('/api/:idproyecto', documentControllers_1.default.Create);
-        this.router.put('/api/:idproyecto/:idDocument', documentControllers_1.default.update);
+        this.router.post('/api/', documentControllers_1.default.Create);
+        this.router.put('/api/:iddocumentacion', documentControllers_1.default.update);
     }
 }
 const documentRoutes = new DocumentRoutes();
