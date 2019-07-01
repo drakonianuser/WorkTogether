@@ -15,17 +15,17 @@
         <div class="row justify-content-center"><h6 class="letras">Registro</h6></div>
       <div class="row justify-content-center pt-3 pb-3">
         <div class="col-11">
-          <input class="form-control" id="nombre" placeholder="Nombres">
+          <input class="form-control" id="nombre" placeholder="Nombres" [(ngModel)]="credentials.nombre">
         </div>
       </div>
       <div class="row justify-content-center pt-3 pb-3">
         <div class="col-11">
-          <input class="form-control" id="apellido" placeholder="Apellidos">
+          <input class="form-control" id="apellido" placeholder="Apellidos" [(ngModel)]="credentials.apellidos">
         </div>
       </div>
       <div class="row justify-content-center pt-3 pb-3">
         <div class="col-11">
-          <input class="form-control" id="email" placeholder="Correo">
+          <input class="form-control" id="email" placeholder="Correo" [(ngModel)]="credentials.correo">
         </div>
       </div>
       <div class="row justify-content-center pt-3 pb-3">
@@ -35,16 +35,16 @@
       </div>
       <div class="row justify-content-center pt-3 pb-3">
         <div class="col-11">
-          <input type="password" class="form-control" id="contraseña" placeholder="Contraseña">
+          <input type="password" class="form-control" id="contraseña" placeholder="Contraseña" [(ngModel)]="credentials.password">
         </div>
       </div>
       <div class="row justify-content-center pt-3 pb-3">
         <div class="col-11">
-          <input type="password" class="form-control" id="contraseña2" placeholder="Confirmar Contraseña">
+          <input type="password" class="form-control" id="contraseña2" placeholder="Confirmar Contraseña" >
         </div>
       </div>      
       <div class="row justify-content-center pb-4">
-          <a class="px-3 py-2 boton" href="#">Registrarse</a>
+          <a  (click)="register()" class="px-3 py-2 boton" routerLink="/registro">Registrarse</a>
       </div>
     </div>
   </div>

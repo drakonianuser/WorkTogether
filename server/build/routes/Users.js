@@ -13,9 +13,9 @@ process.env.SECRET_KEY = 'secret'
 users.post('/register', (req, res) => {
     const userData = {
         nombre: req.body.nombre,
-        apellidos: req.body.apellido,
+        apellidos: req.body.apellidos,
         correo: req.body.correo,
-        contraseña:  req.body.contraseña,
+        password:  req.body.password,
         tipousuario:  "usuario"
     }
 
@@ -26,7 +26,7 @@ users.post('/register', (req, res) => {
     })
         .then(user=> {
             if(!user){
-                const hash = bcrypt.hashSync(userData.contraseña, 10)
+                const hash = bcrypt.hashSync(userData.password, 10)
                 userData.password = hash
                 User.create(userData)
                 .then(user=>{
@@ -56,12 +56,13 @@ users.post('/login', (req, res) =>{
         }
     })
     .then(user=>{
-        if(req.body.contraseña==user.contraseña){
+        if(bcrypt.compare(user.password, req.body.password)){
             let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
                 expiresIn: 1440
             })
             res.json({token: token})
         }else{
+            console.log(user.password)
             res.send('Contraseña incorrecta')
         }
     })
