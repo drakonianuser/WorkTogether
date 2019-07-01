@@ -4,15 +4,14 @@
   </div>
  
   <div class="row justify-content-center" >
-    <div class="col-4 contlogin" >
+       <div class="col-4 contlogin" >
         <div class="row justify-content-center"><h6 class="letras">Login</h6></div>
-
       <div class="row justify-content-center pt-3 pb-3">
         <div class="col-8">
-          <p class="palabras">Email</p>
+          <p class="palabras">Correo</p>
         </div>
         <div class="col-8">
-          <input class="form-control" id="email" placeholder="Email">
+          <input class="form-control" id="correo" placeholder="Correo" name="correo"[(ngModel)] = "credentials.correo">
         </div>
       </div>
       <div class="row justify-content-center pb-4">
@@ -20,12 +19,13 @@
             <p class="palabras">Contraseña</p>
         </div>
         <div class="col-8">
-            <input type="password" class="form-control" id="contraseña" placeholder="Contraseña">
+            <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Contraseña" >
         </div>              
       </div>
       <div class="row justify-content-center pb-4">
-          <a class="px-3 py-2 boton" href="#">Enviar</a>
+          <a (click)="login()"  class="px-3 py-2 boton"routerLink="/login">Enviar</a>
       </div>
+
       <div class="row">
         <div class="col-6 pl-5">
           <p class="palabras">¿No tienes cuenta?</p>
@@ -43,6 +43,7 @@
           </div>
         </div>
     </div>
+
   </div>
   <div class="row" style="height:200px;">
 </div>

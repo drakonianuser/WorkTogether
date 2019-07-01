@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthenticationService, UserDetails} from '../../../authentication.service'
 
 @Component({
   selector: 'app-vista-perfil',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vista-perfil.component.css']
 })
 export class VistaPerfilComponent implements OnInit {
-
-  constructor() { }
+  details: UserDetails
+  constructor(private auth: AuthenticationService){}
+  
 
   ngOnInit() {
+    this.auth.profile().subscribe(
+      user =>{
+        this.details = user
+      },
+      err => {
+        console.error(err)
+      }
+    )
   }
 
 }

@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpClientModule} from '@angular/common/http'
+import {FormsModule} from '@angular/forms'
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +19,8 @@ import { VistaProyectoComponent } from './proyectos/vista-proyecto/vista-proyect
 import { VistaPerfilComponent } from './usuarios/perfiles/vista-perfil/vista-perfil.component';
 import { ActualizarProyectoComponent } from './proyectos/actualizar-proyecto/actualizar-proyecto.component';
 
+import {AuthenticationService} from './authentication.service'
+import {AuthGuardService} from './auth-guard.service'
 
 import {RouterModule, Route} from '@angular/router';
 
@@ -49,9 +55,11 @@ const routes: Route[]=[
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthenticationService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

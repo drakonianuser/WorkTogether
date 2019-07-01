@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthenticationService, TokenPayload} from '../../../authentication.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -6,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  credentials: TokenPayload = {
+    idusuarios: 0,
+    nombre: '',
+    apellidos: '',
+    correo: '',
+    contraseña: 'asd',
+    tipousuario: ''
+  }
+  constructor(private auth: AuthenticationService, private router: Router) { }
 
-  constructor() { }
-
+  login(){
+    this.auth.login(this.credentials).subscribe(
+      () =>{
+        this.router.navigateByUrl('/perfil')
+      },
+      err => {
+        console.error(err)
+      }
+    )
+  }
   ngOnInit() {
   }
 
