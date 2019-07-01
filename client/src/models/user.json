@@ -3,6 +3,6 @@
   "nombre": "name",
   "apellidos": "last name",
   "correo": "email",
-  "contraseña": "password",
+  "password": "password",
   "tipousuario": "User"
 }

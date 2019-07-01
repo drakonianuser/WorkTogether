@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `workTogether`.`usuarios` (
   `nombre` VARCHAR(45) NOT NULL,
   `apellidos` VARCHAR(45) NOT NULL,
   `correo` VARCHAR(70) NOT NULL,
-  `contraseña` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
   `tipousuario` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idusuarios`))
 ENGINE = InnoDB;
