@@ -14,7 +14,8 @@ export class RegistroComponent implements OnInit {
     apellidos: '',
     correo: '',
     password: '',
-    tipousuario: ''
+    tipousuario: '',
+    celular: null
   }
   constructor(private auth: AuthenticationService, private router: Router) { }
 

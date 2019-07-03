@@ -23,6 +23,9 @@ module.exports = db.sequelize.define(
         },
         tipousuario: {
             type: Sequelize.STRING
+        },
+        celular: {
+            type: Sequelize.INTEGER
         }
     },
     {

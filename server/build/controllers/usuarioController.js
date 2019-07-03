@@ -17,7 +17,7 @@ class UsuarioController {
     }
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const user = yield database_1.default.query('SELECT * FROM usuarios');
+            const user = yield database_1.default.query('SELECT * FROM users');
             res.json(user);
         });
     }
@@ -27,7 +27,7 @@ class UsuarioController {
     oneuser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const user = yield database_1.default.query('SELECT * FROM usuarios WHERE idusuarios = ?', [id]);
+            const user = yield database_1.default.query('SELECT * FROM users WHERE idusuarios = ?', [id]);
             if (user.length > 0) {
                 return res.json(user[0]);
             }
@@ -40,7 +40,7 @@ class UsuarioController {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);
-            yield database_1.default.query('INSERT INTO usuarios set ?', [req.body]);
+            yield database_1.default.query('INSERT INTO users set ?', [req.body]);
             res.send("user create");
         });
     }
@@ -50,7 +50,7 @@ class UsuarioController {
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('UPDATE usuarios SET ? WHERE idusuario = ?'[req.body, id]);
+            yield database_1.default.query('UPDATE users SET ? WHERE idusuario = ?'[req.body, id]);
             res.json({ message: "El usuario fue actualizado" });
         });
     }
@@ -60,7 +60,7 @@ class UsuarioController {
     Delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('delete * from usuarios where idusuario = ?', [id]);
+            yield database_1.default.query('DELETE * from users where idusuario = ?', [id]);
             res.json('usuario Eliminado');
         });
     }

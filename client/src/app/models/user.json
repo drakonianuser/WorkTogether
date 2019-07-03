@@ -4,6 +4,6 @@
   "apellidos": "last name",
   "correo": "email",
   "password": "password",
-  "celular": 1123,
-  "tipousuario": "User"
+  "tipousuario": "User",
+  "celular": 1123
 }
