@@ -19,7 +19,8 @@ class PublicacionController {
         return __awaiter(this, void 0, void 0, function* () {
             const { idproyecto } = req.params;
             const publicaciones = yield database_1.default.query('SELECT * FROM publicaciones WHERE proyectos_idproyectos = ?', [idproyecto]);
-            res.json(publicaciones);
+            const detalle = yield database_1.default.query('select * from detallepublicacio');
+            res.json({ "publicacion": publicaciones, "detalle": detalle });
         });
     }
     /**

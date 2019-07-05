@@ -28,8 +28,12 @@ class DetalleProyectoController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const project = yield database_1.default.query('SELECT * FROM detalleproyecto WHERE iddetalleproyecto = ?', [id]);
+            const unepro = yield database_1.default.query('SELECT * FROM proyectos where detalleproyecto_iddetalleproyecto = ?', [id]);
             if (project.length > 0) {
-                return res.json(project[0]);
+                const pro = project[0];
+                const c = unepro[0];
+                const correo = yield database_1.default.query('select correo from usuarios where idusuarios =?', [c['usuarios_idusuarios']]);
+                return res.json({ 'proyecto': pro, 'correo': correo });
             }
             res.status(404).json({ text: "la detalleproyecto no existe" });
         });

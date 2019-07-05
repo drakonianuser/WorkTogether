@@ -19,15 +19,12 @@ const publicacionesRoutes_1 = __importDefault(require("./routes/publicacionesRou
 const detallePublicacionesRoutes_1 = __importDefault(require("./routes/detallePublicacionesRoutes"));
 const imangenesRoutes_1 = __importDefault(require("./routes/imangenesRoutes"));
 const reportesRoutes_1 = __importDefault(require("./routes/reportesRoutes"));
-const Users = require("./routes/Users");
-
 //import  from "./routes/";
 class Server {
     constructor() {
         this.app = express_1.default();
         this.config();
         this.routes();
-
     }
     config() {
         this.app.set('port', process.env.PORT || 3000);
@@ -56,7 +53,6 @@ class Server {
         this.app.use('/detallepu', detallePublicacionesRoutes_1.default);
         this.app.use('/imagenes', imangenesRoutes_1.default);
         this.app.use('/reportes', reportesRoutes_1.default);
-        this.app.use('/users', Users);
     }
     //conecion
     start() {

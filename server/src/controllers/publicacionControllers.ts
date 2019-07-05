@@ -10,7 +10,8 @@ class PublicacionController {
     public async list(req: Request, res: Response) {
         const { idproyecto } = req.params;
         const publicaciones = await pool.query('SELECT * FROM publicaciones WHERE proyectos_idproyectos = ?',[idproyecto]);
-        res.json(publicaciones);
+        const detalle = await pool.query('select * from detallepublicacio')
+        res.json({"publicacion":publicaciones,"detalle":detalle});
     }
 
     /**
