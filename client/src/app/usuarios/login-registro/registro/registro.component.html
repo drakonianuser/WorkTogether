@@ -4,7 +4,7 @@
 <p>
   registro works!
 </p>-->
-
+<app-navegacion></app-navegacion>
 <div class="container-fluid">
   <div class="row" style="height:200px; ">
       <a class="text-hide"  routerLink="/"></a>
@@ -35,12 +35,12 @@
       </div>
       <div class="row justify-content-center pt-3 pb-3">
         <div class="col-11">
-          <input type="password" class="form-control" id="contraseña" placeholder="Contraseña" [(ngModel)]="credentials.password">
+          <input type="password" class="form-control" id="contraseña" placeholder="Contraseña" [(ngModel)]="credentials.password" [(ngModel)]="contrasenas.password">
         </div>
       </div>
       <div class="row justify-content-center pt-3 pb-3">
         <div class="col-11">
-          <input type="password" class="form-control" id="contraseña2" placeholder="Confirmar Contraseña" >
+          <input type="password" class="form-control" id="contraseña2" placeholder="Confirmar Contraseña" [(ngModel)]="contrasenas.password2">
         </div>
       </div>      
       <div class="row justify-content-center pb-4">

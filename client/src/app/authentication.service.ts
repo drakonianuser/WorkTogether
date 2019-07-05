@@ -99,7 +99,6 @@ export class AuthenticationService{
                 return data
             })
         )
-
         return request
     }
 

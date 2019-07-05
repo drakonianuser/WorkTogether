@@ -27,8 +27,6 @@ users.post('/register', (req, res) => {
     })
         .then(user=> {
             if(!user){
-                const hash = bcrypt.hashSync(userData.password, 10)
-                userData.password = hash
                 User.create(userData)
                 .then(user=>{
                     let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
@@ -57,13 +55,12 @@ users.post('/login', (req, res) =>{
         }
     })
     .then(user=>{
-        if(bcrypt.compare(user.password, req.body.password)){
+        if(user.password == req.body.password){
             let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
                 expiresIn: 1440
             })
             res.json({token: token})
         }else{
-            console.log(user.password)
             res.send('Contraseña incorrecta')
         }
     })

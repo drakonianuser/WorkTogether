@@ -1,6 +1,7 @@
+<app-navegacion></app-navegacion>
 <div class="container-fluid">
   <div class="row" style="height:200px;">
-      <a class="text-hide"  routerLink="/">Logo</a>
+
   </div>
  
   <div class="row justify-content-center" >
@@ -11,7 +12,7 @@
           <p class="palabras">Correo</p>
         </div>
         <div class="col-8">
-          <input class="form-control" id="correo" placeholder="Correo" name="correo"[(ngModel)] = "credentials.correo">
+          <input class="form-control" id="correo" type="email"  placeholder="Correo" name="correo"[(ngModel)] = "credentials.correo" required>
         </div>
       </div>
       <div class="row justify-content-center pb-4">

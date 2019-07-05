@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {project} from '../models/project'
-import { Observable } from 'rxjs';
-
+import {detallepro} from '../models/detallepro'
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectServiceService {
-
-  API_URIProject = 'http://localhost:3000/projects/api';
-  API_URICategoria = 'http://localhost:3000/categoria/api';
+  SERVERURL = 'http://localhost:3000/'
+  API_URIProject = this.SERVERURL+'projects/api';
+  API_URICategoria = this.SERVERURL+'categoria/api';
+  API_URIDetalle = this.SERVERURL+'detallepro/api';
   constructor(private http: HttpClient) { }
 
   //Proyect controller
@@ -35,4 +35,14 @@ export class ProjectServiceService {
   }
 
   //DetalleProyecto
+  getListaDetalle(){
+    return this.http.get(`${this.API_URIDetalle}`)
+  }
+  getOneDetalle(id: String){
+    return this.http.get(`${this.API_URIDetalle}/${id}`)
+  }
+  createDetalle(detalle: detallepro){
+    return this.http.post(`${this.API_URIDetalle}`,detalle)
+  }
+  
 }
