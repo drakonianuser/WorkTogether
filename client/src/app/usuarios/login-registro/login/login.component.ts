@@ -13,8 +13,9 @@ export class LoginComponent implements OnInit {
     nombre: '',
     apellidos: '',
     correo: '',
-    contraseña: 'asd',
-    tipousuario: ''
+    password: '',
+    tipousuario: '',
+    celular: 0
   }
   constructor(private auth: AuthenticationService, private router: Router) { }
 
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/perfil')
       },
       err => {
-        console.error(err)
+        console.log("hola")
       }
     )
   }

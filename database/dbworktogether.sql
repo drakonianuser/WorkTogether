@@ -18,11 +18,11 @@ CREATE SCHEMA IF NOT EXISTS `workTogether` DEFAULT CHARACTER SET utf8 ;
 USE `workTogether` ;
 
 -- -----------------------------------------------------
--- Table `workTogether`.`usuarios`
+-- Table `workTogether`.`users`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `workTogether`.`usuarios` ;
+DROP TABLE IF EXISTS `workTogether`.`users` ;
 
-CREATE TABLE IF NOT EXISTS `workTogether`.`usuarios` (
+CREATE TABLE IF NOT EXISTS `workTogether`.`users` (
   `idusuarios` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `apellidos` VARCHAR(45) NOT NULL,
@@ -68,16 +68,16 @@ DROP TABLE IF EXISTS `workTogether`.`proyectos` ;
 
 CREATE TABLE IF NOT EXISTS `workTogether`.`proyectos` (
   `idproyectos` INT NOT NULL AUTO_INCREMENT,
-  `usuarios_idusuarios` INT NOT NULL,
+  `users_idusuarios` INT NOT NULL,
   `categoria_idcategoria` INT NOT NULL,
   `detalleproyecto_iddetalleproyecto` INT NOT NULL,
-  PRIMARY KEY (`idproyectos`, `usuarios_idusuarios`, `categoria_idcategoria`, `detalleproyecto_iddetalleproyecto`),
-  INDEX `fk_proyectos_usuarios_idx` (`usuarios_idusuarios` ASC) ,
+  PRIMARY KEY (`idproyectos`, `users_idusuarios`, `categoria_idcategoria`, `detalleproyecto_iddetalleproyecto`),
+  INDEX `fk_proyectos_users_idx` (`users_idusuarios` ASC) ,
   INDEX `fk_proyectos_categoria1_idx` (`categoria_idcategoria` ASC) ,
   INDEX `fk_proyectos_detalleproyecto1_idx` (`detalleproyecto_iddetalleproyecto` ASC) ,
-  CONSTRAINT `fk_proyectos_usuarios`
-    FOREIGN KEY (`usuarios_idusuarios`)
-    REFERENCES `workTogether`.`usuarios` (`idusuarios`)
+  CONSTRAINT `fk_proyectos_users`
+    FOREIGN KEY (`users_idusuarios`)
+    REFERENCES `workTogether`.`users` (`idusuarios`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_proyectos_categoria1`
@@ -115,14 +115,14 @@ DROP TABLE IF EXISTS `workTogether`.`publicaciones` ;
 CREATE TABLE IF NOT EXISTS `workTogether`.`publicaciones` (
   `idpublicaciones` INT NOT NULL AUTO_INCREMENT,
   `proyectos_idproyectos` INT NOT NULL,
-  `proyectos_usuarios_idusuarios` INT NOT NULL,
+  `proyectos_users_idusuarios` INT NOT NULL,
   `detallepublicacion_iddetallepublicacion` INT NOT NULL,
-  PRIMARY KEY (`idpublicaciones`, `proyectos_idproyectos`, `proyectos_usuarios_idusuarios`, `detallepublicacion_iddetallepublicacion`),
-  INDEX `fk_publicaciones_proyectos1_idx` (`proyectos_idproyectos` ASC, `proyectos_usuarios_idusuarios` ASC) ,
+  PRIMARY KEY (`idpublicaciones`, `proyectos_idproyectos`, `proyectos_users_idusuarios`, `detallepublicacion_iddetallepublicacion`),
+  INDEX `fk_publicaciones_proyectos1_idx` (`proyectos_idproyectos` ASC, `proyectos_users_idusuarios` ASC) ,
   INDEX `fk_publicaciones_detallepublicacion1_idx` (`detallepublicacion_iddetallepublicacion` ASC) ,
   CONSTRAINT `fk_publicaciones_proyectos1`
-    FOREIGN KEY (`proyectos_idproyectos` , `proyectos_usuarios_idusuarios`)
-    REFERENCES `workTogether`.`proyectos` (`idproyectos` , `usuarios_idusuarios`)
+    FOREIGN KEY (`proyectos_idproyectos` , `proyectos_users_idusuarios`)
+    REFERENCES `workTogether`.`proyectos` (`idproyectos` , `users_idusuarios`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_publicaciones_detallepublicacion1`
@@ -143,12 +143,12 @@ CREATE TABLE IF NOT EXISTS `workTogether`.`documentacion` (
   `contenido` TEXT NOT NULL,
   `publicaciones_idpublicaciones` INT NOT NULL,
   `publicaciones_proyectos_idproyectos` INT NOT NULL,
-  `publicaciones_proyectos_usuarios_idusuarios` INT NOT NULL,
-  PRIMARY KEY (`iddocumentacion`, `publicaciones_idpublicaciones`, `publicaciones_proyectos_idproyectos`, `publicaciones_proyectos_usuarios_idusuarios`),
-  INDEX `fk_documentacion_publicaciones1_idx` (`publicaciones_idpublicaciones` ASC, `publicaciones_proyectos_idproyectos` ASC, `publicaciones_proyectos_usuarios_idusuarios` ASC) ,
+  `publicaciones_proyectos_users_idusuarios` INT NOT NULL,
+  PRIMARY KEY (`iddocumentacion`, `publicaciones_idpublicaciones`, `publicaciones_proyectos_idproyectos`, `publicaciones_proyectos_users_idusuarios`),
+  INDEX `fk_documentacion_publicaciones1_idx` (`publicaciones_idpublicaciones` ASC, `publicaciones_proyectos_idproyectos` ASC, `publicaciones_proyectos_users_idusuarios` ASC) ,
   CONSTRAINT `fk_documentacion_publicaciones1`
-    FOREIGN KEY (`publicaciones_idpublicaciones` , `publicaciones_proyectos_idproyectos` , `publicaciones_proyectos_usuarios_idusuarios`)
-    REFERENCES `workTogether`.`publicaciones` (`idpublicaciones` , `proyectos_idproyectos` , `proyectos_usuarios_idusuarios`)
+    FOREIGN KEY (`publicaciones_idpublicaciones` , `publicaciones_proyectos_idproyectos` , `publicaciones_proyectos_users_idusuarios`)
+    REFERENCES `workTogether`.`publicaciones` (`idpublicaciones` , `proyectos_idproyectos` , `proyectos_users_idusuarios`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -201,13 +201,13 @@ CREATE TABLE IF NOT EXISTS `workTogether`.`reportes` (
   `idreportes` INT NOT NULL AUTO_INCREMENT,
   `reporte` TINYTEXT NOT NULL,
   `proyectos_idproyectos` INT NOT NULL,
-  `proyectos_usuarios_idusuarios` INT NOT NULL,
+  `proyectos_users_idusuarios` INT NOT NULL,
   `proyectos_categoria_idcategoria` INT NOT NULL,
-  PRIMARY KEY (`idreportes`, `proyectos_idproyectos`, `proyectos_usuarios_idusuarios`, `proyectos_categoria_idcategoria`),
-  INDEX `fk_reportes_proyectos1_idx` (`proyectos_idproyectos` ASC, `proyectos_usuarios_idusuarios` ASC, `proyectos_categoria_idcategoria` ASC) ,
+  PRIMARY KEY (`idreportes`, `proyectos_idproyectos`, `proyectos_users_idusuarios`, `proyectos_categoria_idcategoria`),
+  INDEX `fk_reportes_proyectos1_idx` (`proyectos_idproyectos` ASC, `proyectos_users_idusuarios` ASC, `proyectos_categoria_idcategoria` ASC) ,
   CONSTRAINT `fk_reportes_proyectos1`
-    FOREIGN KEY (`proyectos_idproyectos` , `proyectos_usuarios_idusuarios` , `proyectos_categoria_idcategoria`)
-    REFERENCES `workTogether`.`proyectos` (`idproyectos` , `usuarios_idusuarios` , `categoria_idcategoria`)
+    FOREIGN KEY (`proyectos_idproyectos` , `proyectos_users_idusuarios` , `proyectos_categoria_idcategoria`)
+    REFERENCES `workTogether`.`proyectos` (`idproyectos` , `users_idusuarios` , `categoria_idcategoria`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

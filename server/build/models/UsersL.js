@@ -18,11 +18,14 @@ module.exports = db.sequelize.define(
         correo: {
             type: Sequelize.STRING
         },
-        contraseña: {
+        password: {
             type: Sequelize.STRING
         },
         tipousuario: {
             type: Sequelize.STRING
+        },
+        celular: {
+            type: Sequelize.INTEGER
         }
     },
     {

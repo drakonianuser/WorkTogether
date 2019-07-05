@@ -9,8 +9,9 @@ export interface UserDetails{
     nombre: string
     apellidos: string
     correo: string
-    contraseña: string
+    password: string
     tipousuario: string
+    celular: number
     exp: number
     iat: number
 }
@@ -23,8 +24,9 @@ export interface TokenPayload{
     nombre: string
     apellidos: string
     correo: string
-    contraseña: string
+    password: string
     tipousuario: string
+    celular: number
 }
 
 @Injectable()

@@ -19,6 +19,10 @@ import { VistaProyectoComponent } from './proyectos/vista-proyecto/vista-proyect
 import { VistaPerfilComponent } from './usuarios/perfiles/vista-perfil/vista-perfil.component';
 import { ActualizarProyectoComponent } from './proyectos/actualizar-proyecto/actualizar-proyecto.component';
 
+import {ProjectServiceService} from './services/project-service.service'
+import {UserServiceService} from './services/user-service.service'
+import {WorkServiceService} from './services/work-service.service'
+
 import {AuthenticationService} from './authentication.service'
 import {AuthGuardService} from './auth-guard.service'
 
@@ -59,7 +63,13 @@ const routes: Route[]=[
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthenticationService, AuthGuardService],
+  providers: [
+    AuthenticationService,
+    AuthGuardService,
+    ProjectServiceService,
+    UserServiceService,
+    WorkServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
