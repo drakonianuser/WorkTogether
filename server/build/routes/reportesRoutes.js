@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const reportesControllers_1 = __importDefault(require("../controllers/reportesControllers"));
 class ReportesRoutes {
-    constructor() {
+    constructor() { 
         this.router = express_1.Router();
         this.config();
     }

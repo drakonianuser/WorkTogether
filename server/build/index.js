@@ -19,6 +19,7 @@ const publicacionesRoutes_1 = __importDefault(require("./routes/publicacionesRou
 const detallePublicacionesRoutes_1 = __importDefault(require("./routes/detallePublicacionesRoutes"));
 const imangenesRoutes_1 = __importDefault(require("./routes/imangenesRoutes"));
 const reportesRoutes_1 = __importDefault(require("./routes/reportesRoutes"));
+const Users = require("./routes/Users");
 //import  from "./routes/";
 class Server {
     constructor() {
@@ -45,7 +46,7 @@ class Server {
         this.app.use('/', indexRoutes_1.default);
         this.app.use('/projects', projectRoutes_1.default);
         this.app.use('/documentacion', documentRoutes_1.default);
-        this.app.use('/usuario', usuarioRoutes_1.default);
+        this.app.use('/users', usuarioRoutes_1.default);
         this.app.use('/categoria', categoriasRoutes_1.default);
         this.app.use('/detallepro', detalleProyectoRoutes_1.default);
         this.app.use('/comentarios', comentariosRoutes_1.default);
@@ -53,6 +54,7 @@ class Server {
         this.app.use('/detallepu', detallePublicacionesRoutes_1.default);
         this.app.use('/imagenes', imangenesRoutes_1.default);
         this.app.use('/reportes', reportesRoutes_1.default);
+        this.app.use('/users', Users);
     }
     //conecion
     start() {
