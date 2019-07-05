@@ -19,10 +19,14 @@ class ProjectsController {
     public async oneproject(req: Request, res: Response): Promise<any> {
         const { id }= req.params;
         const project = await pool.query('SELECT * FROM detalleproyecto WHERE iddetalleproyecto = ?',[id]);
+        const unepro = await pool.query('SELECT * FROM proyectos where detalleproyecto_iddetalleproyecto = ?',[id]);
         if  (project.length > 0){
-             return res.json(project[0]); 
+            const pro = project[0];
+            const c = unepro[0];
+            const correo = await pool.query('select correo from usuarios where idusuarios =?',[c['usuarios_idusuarios']]);
+             return res.json({'proyecto':pro,'correo':correo}); 
         }
-        res.status(404).json({text: "El proyecto no existe"});
+        res.status(404).json({text: "El proyecto no existe"}); 
     }
 
     /**

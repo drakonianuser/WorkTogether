@@ -54,6 +54,16 @@ class UsuarioController {
         res.json('usuario Eliminado');
     }
 
+    /**
+     * Userxcoreo
+     * trae un usuario que cumpla con la condicion de el correo mandado por un fomulario 
+     * y este retorna un usuario en tipo json 
+     */
+    public async Userxcoreo(req:Request,res:Response) {
+        const usuario = await pool.query('select * from usuarios where correo = ?'[req.body]);
+        res.json(usuario);
+    }
+
 }
 
 const usuarioController = new UsuarioController();
