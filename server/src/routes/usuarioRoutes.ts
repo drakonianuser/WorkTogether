@@ -12,6 +12,7 @@ class UsuarioRoutes {
     config(): void {
         this.router.get('/api/', usuarioController.list);
         this.router.get('/api/:id', usuarioController.oneuser);
+        this.router.get('/api/correo/',usuarioController.Userxcoreo);
         this.router.post('/api/', usuarioController.create);
         this.router.put('/api/:id', usuarioController.update);
         this.router.delete('/api/:id', usuarioController.Delete);
