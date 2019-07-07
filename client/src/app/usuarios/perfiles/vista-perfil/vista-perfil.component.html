@@ -16,50 +16,49 @@
       <p class="letras" id="nombrePro">Perfil</p>
     </div>
     <div class="row justify-content-center" >
-      <div class="col-5 contlogin" >
+      <div class="col-6 contlogin" >
         <div class="row justify-content-center pt-5">
           <div class="col-10  contlogin">
-            <p>{{details?.nombre}}</p>
+            <p class="palabras2">{{details?.nombre}}</p>
           </div>
         </div> 
         <div class="row justify-content-center">
           <div class="col-10 contlogin">
-            <p>{{details?.apellidos}}</p>
+            <p class="palabras2">{{details?.apellidos}}</p>
           </div>
         </div>
         <div class="row justify-content-center pb-3">
           <div class="col-10 contlogin">
-            <p>{{details?.correo}}</p>
+            <p class="palabras2">{{details?.correo}}</p>
           </div>
         </div>   
         <div class="row pb-3">
           <div class="col-8 pl-5">
-            <a class="px-3 py-2 boton" routerLink="/CrearProyecto">Crear Foro</a>
+            <a class="px-3 py-2 link" routerLink="/CrearProyecto">Crear Proyecto</a>
           </div>
           <div class="col-1 offset-1">
-            <a class="px-3 py-2 boton" routerLink="/editar">Editar</a>
+            <a class="px-3 py-2 link" routerLink="/editar">Editar</a>
           </div>
         </div>
-        <div class="row justify-content-center pt-3">
-          <div class="col-2">
-            <p>Foros</p>
+        <div class="row justify-content-center pt-5">
+          <div class="col-12">
+            <p class="text-center letras2">Proyectos</p>
           </div>
         </div>
-        <div>
           <div class="row justify-content-center pb-3">
-            <div class="col-10  contlogin">
-              <p>Mientrastanto esta esto aqui</p>
+            <div class="col-10">
+              <div class="row justify-content-center pt-5" *ngFor="let foro of foros">
+                  <div class="col-8" id="fila">
+                    <h4 class="text-center  palabras">{{foro.nombreProyecto}}</h4>
+                  </div>
+                  <div class="col-10" id="fila">
+                    <a class="link pt-3"  routerLink="/"><p class="text-justify">{{foro.descripcion}}</p></a>
+                  </div>
+              </div>
+              <div class="row" style="height:80px;"></div>       
             </div>
           </div>
-          <div class="row pb-5">
-            <div class="col-8 pl-5">
-              <a class="px-3 py-2 boton" routerLink="/actualizar">Actualizar</a>
-            </div>
-            <div class="col-4 pl-5">
-              <a class="px-3 py-2 boton" href="#">Eliminar</a>
-            </div>
-          </div>
-        </div>
+          <div class="row pb-5"></div>
       </div>
     </div>
     <div class="row" style="height:200px;">
