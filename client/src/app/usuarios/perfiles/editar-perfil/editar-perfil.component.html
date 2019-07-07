@@ -15,29 +15,29 @@
         <div class="col-9 contlogin">
           <div class="row justify-content-center pt-5 pb-3">
             <div class="col-10">  
-              <input class="form-control" id="nombre" placeholder="Nombres">
+              <input class="form-control" id="nombre" placeholder="Nombres" [(ngModel)]="user.nombre">
             </div>
           </div>
           <div class="row justify-content-center pt-3 pb-3">
             <div class="col-10">
-              <input class="form-control" id="apellido" placeholder="Apellidos">
+              <input class="form-control" id="apellido" placeholder="Apellidos" [(ngModel)]="user.apellidos">
             </div>
           </div>
           <div class="row justify-content-center pt-3 pb-3">
             <div class="col-10">
-              <input type="email" class="form-control" id="correo" placeholder="Correo">
+              <input type="email" class="form-control" id="correo" placeholder="Correo" [(ngModel)]="user.correo">
             </div>
           </div>
           <div class="row justify-content-center pt-3 pb-5">
             <div class="col-10">
-              <input  class="form-control" id="celular" placeholder="Celular">
+              <input  class="form-control" id="celular" placeholder="Celular" [(ngModel)]="numero.number">
             </div>
           </div>
         </div>
       </div>    
       <div class="row justify-content-end">
         <div class="col-4">
-          <a class="px-3 py-2 boton" href="#">Editar</a>
+          <a (click)="updateUser()" class="px-3 py-2 boton" routerLink="/editar">Editar</a>
         </div>
       </div>
       <div class="row" style="height:70px; ">

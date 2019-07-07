@@ -6,12 +6,15 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-10" id="fila">
-            <div class="row justify-content-center pt-5" *ngFor="let foro of foros">
+            <div class="row justify-content-center pt-5" *ngFor="let project of projects.detalle">
                 <div class="col-8" id="fila">
-                    <h4 class="text-center pt-3 palabras">{{foro.nombreProyecto}}</h4>
+                    <h4 class="text-center pt-3 palabras">{{project.nombreproyecto}}</h4>
                 </div>
                 <div class="col-10 pt-3" id="fila">
-                    <a class="link pt-3"  routerLink="/"><p class="text-justify">{{foro.descripcion}}</p></a>
+                    <a  [routerLink]="['/proyecto', project.iddetalleproyecto]" class="link pt-3"  ><p class="text-justify">{{project.descripcion}}</p></a>
+                </div>
+                <div class="col-10 pt-2" id="fila">
+                    <h6 class="text-justify">categoria</h6>
                 </div>
             </div>
             <div class="row" style="height:80px;"></div>       

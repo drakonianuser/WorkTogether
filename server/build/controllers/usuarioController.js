@@ -49,8 +49,8 @@ class UsuarioController {
      */
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            yield database_1.default.query('UPDATE users SET ? WHERE idusuario = ?'[req.body, id]);
+            const { id } = req.params; 
+            yield database_1.default.query('UPDATE users SET ? WHERE idusuarios = ?',[req.body, id]);
             res.json({ message: "El usuario fue actualizado" });
         });
     }

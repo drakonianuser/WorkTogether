@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ProjectServiceService} from '../services/project-service.service'
 
 @Component({
   selector: 'app-index',
@@ -6,20 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-
+  projects: any = [];
   
-  constructor() { 
+  constructor(private projectService: ProjectServiceService) { 
     
   }
 
   ngOnInit() {
-    
+    this.projectService.getProjectLista().subscribe(
+      res => {
+        this.projects = res;
+        console.log(this.projects)
+      },
+      err => console.log(err)
+    )
   }
-  foros:Array<any>=[
-    {nombreProyecto:'Work Together',descripcion:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis blanditiis eius itaque! Dolorum, inventore voluptas omnis esse suscipit culpa reiciendis officia veniam sed sunt expedita quam iusto? Natus, corrupti. Earum!'},
-    {nombreProyecto:'Work Together',descripcion:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis blanditiis eius itaque! Dolorum, inventore voluptas omnis esse suscipit culpa reiciendis officia veniam sed sunt expedita quam iusto? Natus, corrupti. Earum!'},
-    {nombreProyecto:'Work Together',descripcion:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis blanditiis eius itaque! Dolorum, inventore voluptas omnis esse suscipit culpa reiciendis officia veniam sed sunt expedita quam iusto? Natus, corrupti. Earum!'}
-    
-  ] 
+  irAProyecto(id: String){
+    console.log(id)
+  }
 
 }

@@ -38,7 +38,8 @@ const routes: Route[]=[
   {path: 'recuperar2', component: RecuperarContra2Component},
   {path: 'actualizar', component: ActualizarProyectoComponent},
   {path: 'CrearProyecto', component: CrearProyectoComponent},
-  {path: 'editar', component: EditarPerfilComponent}
+  {path: 'editar', component: EditarPerfilComponent},
+  {path: 'proyecto/:id', component: VistaProyectoComponent}
 ]
 
 @NgModule({
