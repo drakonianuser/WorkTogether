@@ -1,11 +1,10 @@
 <div class="container" id="contenedor">
   <div class="row h-30" id="fila">
-    <div class="col-8" ><a routerLink="/"><img src="./icono.png" alt="" style="height: 40px; width: 50px;"></a> </div>
+    <div class="col-8" ><a routerLink="/"><img src="assets/icono2.png" alt="" style="height: 40px; width: 50px;"></a> </div>
     <div class="col-1" *ngIf="auth.isLoggedIn()"><a (click)="auth.logout()" class="py-3 px-4 link"  id="item"  routerLink="/login">Salir</a> </div>
     <div class="col-1" *ngIf="!auth.isLoggedIn()"><a class="py-3 px-4 link"  routerLink="/registro">Registro</a> </div>
     <div class="col-1" *ngIf="!auth.isLoggedIn()"><a class="py-3 px-4 link"  routerLink="/login">Login</a> </div>
     <div class="col-1" *ngIf="auth.isLoggedIn()"><a class="py-3 px-4 link"   routerLink="/perfil">Perfil</a> </div>
-    <div class="col-1"><a class="py-3 px-4 link" id="item2"  routerLink="/">Categorias</a></div>
 </div>
 
 
