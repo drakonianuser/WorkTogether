@@ -1,21 +1,25 @@
 <app-navegacion></app-navegacion>
 
-    <div class="container" id="principal">
-        <div class="row justify-content-center aling-item-center"><h6 class="letras">Foros</h6></div>
-        <div class="row justify-content-center">
-            <div class="col-10" id="fila">
-                <div class="row" style="height:400px"></div>
-                <div class="row justify-content-center">
-                   
-                </div>
-        
-        
+<div class="container" id="principal">
+    <div class="row justify-content-center aling-item-center">
+        <h6 class="letras">Foros</h6>
     </div>
+    <div class="row justify-content-center">
+        <div class="col-10" id="fila">
+            <div class="row justify-content-center pt-5" *ngFor="let foro of foros">
+                <div class="col-8" id="fila">
+                    <h4 class="text-center pt-3 palabras">{{foro.nombreProyecto}}</h4>
+                </div>
+                <div class="col-10 pt-3" id="fila">
+                    <a class="link pt-3"  routerLink="/"><p class="text-justify">{{foro.descripcion}}</p></a>
+                </div>
+            </div>
+            <div class="row" style="height:80px;"></div>       
+        </div>
+    </div>
+    <div class="row" style="height:200px;"></div>
 </div>
-    <div class="row" style="height:200px; ">
-        </div></div>
     
-
 
 
 
