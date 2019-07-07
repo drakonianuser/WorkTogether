@@ -10,34 +10,24 @@
     <div class="col-5 contlogin" >
       <div class="row justify-content-center pt-5 pb-5">
         <div class="col-4">
-          <input class="form-control" id="titulo" placeholder="Titulo">
+          <input class="form-control" id="titulo" placeholder="Titulo" [(ngModel)]="detallePro.nombreproyecto">
         </div>
         <div class="col-4">
-          <input class="form-control" id="titulo" placeholder="Versión">
+          <input class="form-control" id="titulo" placeholder="Categoria" >
         </div>
       </div>
       <div class="row justify-content-center pb-4">
         <div class="col-10">
-          <textarea class="form-control" id="descripcion" rows="1" placeholder="Descripción"></textarea>
+          <textarea class="form-control" id="descripcion" rows="1" placeholder="Descripción"  [(ngModel)]="detallePro.descripcion"></textarea>
         </div>
       </div>
       <div class="row justify-content-center pb-4">
         <div class="col-10">
-           <textarea class="form-control" rows="1" id="alcance" placeholder="Alcance"></textarea>
+           <textarea class="form-control" rows="1" id="alcance" placeholder="Alcance"  [(ngModel)]="detallePro.alcance"></textarea>
         </div>
       </div>
-      <div class="row justify-content-center pb-4">
-        <div class="col-10">
-          <textarea class="form-control" id="resumen" rows="1" placeholder="Resumen"></textarea>
-        </div>
-      </div>
-      <div class="row justify-content-center pb-4">
-        <div class="col-10">
-          <textarea class="form-control" id="contenido" rows="1" placeholder="Contenido"></textarea>
-        </div>
-      </div>    
       <div class="row justify-content-center pb-5">
-        <a class="px-3 py-2 boton" href="#">Guardar</a>
+        <a (click)="saveNewDetalle()" class="px-3 py-2 boton" routerLink="/CrearProyecto">Guardar</a>
       </div>    
     </div>
   </div>

@@ -2,6 +2,12 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {project} from '../models/project'
 import {detallepro} from '../models/detallepro'
+import {detallepublicacion} from '../models/detallepublicacion'
+import {documentacion} from '../models/documentacion'
+import {imagen} from '../models/imagen'
+import {publicacion} from '../models/publicacion'
+import {reportes} from '../models/reportes'
+import {user} from '../models/user'
 @Injectable({
   providedIn: 'root'
 })
@@ -10,6 +16,12 @@ export class ProjectServiceService {
   API_URIProject = this.SERVERURL+'projects/api';
   API_URICategoria = this.SERVERURL+'categoria/api';
   API_URIDetalle = this.SERVERURL+'detallepro/api';
+  API_URIDetallePubli = this.SERVERURL+'detallepu/api';
+  API_URIDocumen = this.SERVERURL+'documentacion/api';
+  API_URImagen = this.SERVERURL+'imagenes/api';
+  API_URIPublicacion = this.SERVERURL+'publicaciones/api';
+  API_URIReportes = this.SERVERURL+'reportes/api';
+  API_URIUser = this.SERVERURL+'users/api';
   constructor(private http: HttpClient) { }
 
   //Proyect controller
@@ -36,13 +48,88 @@ export class ProjectServiceService {
 
   //DetalleProyecto
   getListaDetalle(){
-    return this.http.get(`${this.API_URIDetalle}`)
+    return this.http.get(`${this.API_URIDetalle}`);
   }
   getOneDetalle(id: String){
-    return this.http.get(`${this.API_URIDetalle}/${id}`)
+    return this.http.get(`${this.API_URIDetalle}/${id}`);
   }
   createDetalle(detalle: detallepro){
-    return this.http.post(`${this.API_URIDetalle}`,detalle)
+    return this.http.post(`${this.API_URIDetalle}`,detalle);
+  }
+  updateDetalle(id: String, detalle: detallepro){
+    return this.http.put(`${this.API_URIDetalle}/${id}`,detalle);
   }
   
+  //detallePublicación
+  getListaDetallePublicacion(id: String){
+    return this.http.get(`${this.API_URIDetallePubli}/${id}`);
+  }
+  getOneDetallePu(id: String){
+    return this.http.get(`${this.API_URIDetallePubli}/${id}`)
+  }
+  createDetallePu(detallepu: detallepublicacion){
+    return this.http.post(`${this.API_URIDetallePubli}`,detallepu);
+  }
+  updateDetallePu(id: String, detallepu: detallepublicacion){
+    return this.http.put(`${this.API_URIDetallePubli}/${id}`,detallepu);
+  }
+
+  //Documentación
+  getListaDocumentacion(id: String){
+    return this.http.get(`${this.API_URIDocumen}/${id}`)
+  }
+  getOneDocumen(id: String){
+    return this.http.get(`${this.API_URIDocumen}/${id}`) //revisar
+  }
+  createDocumen(documentacion: documentacion){
+    return this.http.post(`${this.API_URIDocumen}`,documentacion);
+  }
+  updateDocumen(id: String, documentacion: documentacion){
+    return this.http.put(`${this.API_URIDocumen}/${id}`,documentacion);
+  }
+
+  //Imagen
+  getListaImagen(id: String){
+    return this.http.get(`${this.API_URImagen}/${id}`);
+  }
+  createImagen(imagen: imagen){
+    return this.http.post(`${this.API_URImagen}`,imagen);
+  }
+
+  //publicacion
+  getListaPublicacion(id: String){
+    return this.http.get(`${this.API_URIPublicacion}/${id}`);
+  }
+  getOnePublicacion(idPublicacion: String, idProyecto){
+    return this.http.get(`${this.API_URIPublicacion}/${idPublicacion}/${idProyecto}`);
+  }
+  createPublicacion(publicacion: publicacion){
+    return this.http.post(`${this.API_URIPublicacion}`,publicacion);
+  }
+
+  //Reportes
+  getListaReportes(){
+    return this.http.get(`${this.API_URIReportes}`);
+  }
+  getOneReporte(id: String){
+    return this.http.get(`${this.API_URIReportes}/${id}`);
+  }
+  createReporte(reportes: reportes){
+    return this.http.post(`${this.API_URIReportes}`,reportes);
+  }
+  deleteReporte(id: String){
+    return this.http.delete(`${this.API_URIReportes}/${id}`);
+  }
+
+  //Usuarios
+  getOneUser(id: String){
+    return this.http.get(`${this.API_URIUser}/${id}`);
+  }
+  updateUser(id: String, user: user){
+    return this.http.put(`${this.API_URIUser}/${id}`, user);
+  }
+  getUserXCorreo(correo: String){
+    return this.http.get(`${this.API_URIUser}/${correo}`);
+  }
+
 }
