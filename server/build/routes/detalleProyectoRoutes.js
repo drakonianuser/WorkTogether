@@ -13,9 +13,9 @@ class DetalleProyectoRoutes {
     config() {
         this.router.get('/api/', detalleProyectoController_1.default.list);
         this.router.get('/api/:id', detalleProyectoController_1.default.one);
-        this.router.post('/api/', detalleProyectoController_1.default.create);
+        this.router.post('/api/:nombre', detalleProyectoController_1.default.create);
         this.router.put('/api/:id', detalleProyectoController_1.default.update);
-    }
+    } 
 }
 const detalleProyectoRoutes = new DetalleProyectoRoutes();
 exports.default = detalleProyectoRoutes.router;

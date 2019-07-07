@@ -53,11 +53,11 @@ export class ProjectServiceService {
   getOneDetalle(id: String){
     return this.http.get(`${this.API_URIDetalle}/${id}`);
   }
-  createDetalle(detalle: detallepro){
-    return this.http.post(`${this.API_URIDetalle}`,detalle);
+  createDetalle(nombre: String,detalle: detallepro){
+    return this.http.post(`${this.API_URIDetalle}/${nombre}`,detalle);
   }
-  updateDetalle(id: String, detalle: detallepro){
-    return this.http.put(`${this.API_URIDetalle}/${id}`,detalle);
+  getOnedetalles(nombreProyecto: String){
+    return this.http.get(`${this.API_URIDetalle}/${nombreProyecto}`);
   }
   
   //detallePublicación

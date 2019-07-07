@@ -38,19 +38,22 @@ class DetalleProyectoController {
             res.status(404).json({ text: "la detalleproyecto no existe" });
         });
     }
-    /**
+
+
+    /** 
      * create
      */
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);
+            const {nombre} = req.params
             yield database_1.default.query('INSERT INTO detalleproyecto set ?', [req.body]);
-            res.send("detalleproyecto create");
+            res.send(yield database_1.default.query('SELECT iddetalleproyecto FROM detalleproyecto WHERE nombreproyecto =?', [nombre]));
         });
     }
     /**
      * update
-     */
+     */ 
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

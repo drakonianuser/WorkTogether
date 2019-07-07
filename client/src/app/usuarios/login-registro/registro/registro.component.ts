@@ -9,8 +9,10 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
   contrasenas = {
-    password: '',
     password2: ''
+  }
+  numero = {
+    number: ""
   }
   credentials: TokenPayload = {
     idusuarios: 0,
@@ -24,14 +26,16 @@ export class RegistroComponent implements OnInit {
   constructor(private auth: AuthenticationService, private router: Router) { }
 
   register(){
+    this.credentials.celular = parseInt(this.numero.number)
     if(this.credentials.nombre!=""){
       if(this.credentials.apellidos!=""){
         if(this.credentials.correo!=""){
           if(this.credentials.password!=""){
             if(this.contrasenas.password2!=""){
-                if(this.credentials.celular!=0){
-                  if(this.contrasenas.password==this.contrasenas.password2){
+                if(this.numero.number!=""){
+                  if(this.credentials.password==this.contrasenas.password2){
                     if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(this.credentials.correo)){
+                      
                       this.auth.register(this.credentials).subscribe(
                         () =>{
                           this.router.navigateByUrl('/perfil')

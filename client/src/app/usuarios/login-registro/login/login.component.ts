@@ -9,6 +9,9 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  numero: {
+    number: ''
+  }
   credentials: TokenPayload = {
     idusuarios: 0,
     nombre: '',
@@ -16,7 +19,7 @@ export class LoginComponent implements OnInit {
     correo: '',
     password: '',
     tipousuario: '',
-    celular: 0
+    celular: null
   }
   constructor(private auth: AuthenticationService, private router: Router) { }
 
