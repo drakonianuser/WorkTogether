@@ -18,16 +18,16 @@
       </div>
       <div class="row justify-content-center pb-4">
         <div class="col-10">
-          <textarea class="form-control" id="descripcion" rows="1" placeholder="Descripción"  [(ngModel)]="detallePro.descripcion"></textarea>
+          <textarea class="form-control" id="descripcion" rows="2" placeholder="Descripción"  [(ngModel)]="detallePro.descripcion"></textarea>
         </div>
       </div>
       <div class="row justify-content-center pb-4">
         <div class="col-10">
-           <textarea class="form-control" rows="1" id="alcance" placeholder="Alcance"  [(ngModel)]="detallePro.alcance"></textarea>
+           <textarea class="form-control" rows="2" id="alcance" placeholder="Alcance"  [(ngModel)]="detallePro.alcance"></textarea>
         </div>
       </div>
       <div class="row justify-content-center pb-5">
-        <a (click)="saveNewDetalle()" class="px-3 py-2 boton" routerLink="/CrearProyecto">Guardar</a>
+        <a (click)="saveNewDetalle()" class="link" routerLink="/CrearProyecto">Guardar</a>
       </div>    
     </div>
   </div>

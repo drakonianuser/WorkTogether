@@ -6,13 +6,12 @@
 }
 .contlogin{
 
-    background: rgba(255,255,255,0.3);
-    
+    background: rgba(255,255,255,0.5);
 
 }
 .link{
 
-	font:bold 110% serif;
+	font:bold 130% serif;
 	text-decoration: none;
     color: rgba(0,0,0,0.6);
 	transition:background 1s;
@@ -22,25 +21,9 @@
 	color:rgba(129, 129, 129, 0.4);
 
 }
-.palabras{
-
-    font:bold 150% serif;
-    color: rgba(0, 0, 0,0.6);
-
-}
 .letras2{
 
     font: 300% serif;
     color:rgba(0,0,0,0.6);
-
-}
-#fila{
-
-    background: rgba(255,255,255,0.5);
-}
-.palabras2{
-
-    font:bold 110% serif;
-    color: rgba(0, 0, 0,0.6);
 
 }

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http'
 import {FormsModule} from '@angular/forms'
 
@@ -27,6 +27,7 @@ import {AuthenticationService} from './authentication.service'
 import {AuthGuardService} from './auth-guard.service'
 
 import {RouterModule, Route} from '@angular/router';
+import { DocumentacionComponent } from './proyectos/documentacion/documentacion.component';
 
 const routes: Route[]=[
   {path: '', component: IndexComponent},
@@ -39,7 +40,9 @@ const routes: Route[]=[
   {path: 'actualizar', component: ActualizarProyectoComponent},
   {path: 'CrearProyecto', component: CrearProyectoComponent},
   {path: 'editar', component: EditarPerfilComponent},
-  {path: 'proyecto/:id', component: VistaProyectoComponent}
+  {path: 'proyecto/:id', component: VistaProyectoComponent},
+  {path: 'documentacion', component: DocumentacionComponent}
+
 ]
 
 @NgModule({
@@ -55,7 +58,8 @@ const routes: Route[]=[
     NavegacionComponent,
     VistaProyectoComponent,
     VistaPerfilComponent,
-    ActualizarProyectoComponent
+    ActualizarProyectoComponent,
+    DocumentacionComponent
   ],
   imports: [
     BrowserModule,

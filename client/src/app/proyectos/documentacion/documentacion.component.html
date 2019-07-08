@@ -1,0 +1,61 @@
+<app-navegacion></app-navegacion>
+<div class="container-fluid">
+  <div class="row" style="height:100px;"></div>
+  <div class="row justify-content-center">
+    <h6 class="letras">Nombre proyecto</h6>
+  </div>
+  <div class="row justify-content-center" >
+    <div class="col-7 contlogin">
+      <div class="row justify-content-center pt-5">
+        <div class="col-5 contlogin">
+          <p class="text-left">Versión</p>
+        </div>
+        <div class="col-5 contlogin">
+          <p class="text-right">fecha</p>
+        </div>
+      </div> 
+      <div class="row justify-content-center pb-5">
+        <div class="col-10 contlogin">
+          <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam voluptatem aperiam eos maiores deleniti numquam ipsum? Tenetur incidunt libero, harum pariatur nobis, quasi nisi ipsum velit voluptas consectetur, possimus vel.</p>
+        </div>
+      </div>
+      <div class="row justify-content-center pb-5">
+        <a class="link" href="#">Contacto</a>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <p class="text-center letras2">Avences</p>
+        </div>
+      </div> 
+      <div class="row justify-content-center pb-5" *ngFor="let documento of documentacion">
+        <div class="col-10 contlogin">
+          <p class="tesxt-justify">{{documento.texto}}</p>
+        </div>
+        <div class="col-10 contlogin">
+          <img src={{documento.imagen}} alt="">
+        </div>
+      </div>
+      <div class="row justify-content-center pt-4 pb-3">
+        <a class="link" href="#">Nuevo Avance</a>
+      </div>
+      <div class="row justify-content-center pb-2">
+        <div class="col-8">
+          <textarea class="form-control" id="resumen" rows="4" placeholder="Texto"></textarea>
+        </div>
+      </div>
+      <div class="row justify-content-center pb-5">
+        <div class="col-6">
+            <input type="texto" class="form-control" id="link" placeholder="Link">
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <p class="text-center letras2">Comentarios</p>
+        </div>
+      </div> 
+      <div class="row" style="height:100px;"></div>
+    </div>
+  </div>
+  <div class="row" style="height:200px;">
+  </div>
+</div>

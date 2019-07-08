@@ -1,7 +1,7 @@
 .letras{
 
     font: 400% serif;
-    color:rgba(255,255,255,0.8);
+    color:rgba(0,0,0,0.6);
 
 }
 .contlogin{
@@ -10,17 +10,16 @@
     
 
 }
-.boton{
+.link{
 
-	font:bold 90% Verdana;
+	font:bold 110% serif;
 	text-decoration: none;
-    color: rgba(255,255,255,0.6);
-    background:rgba(8, 8, 8, 0.8);
+    color: rgba(0,0,0,0.6);
 	transition:background 1s;
 }
-.boton:hover{
+.link:hover{
 
-	background:white;
-	color:rgba(8, 8, 8, 0.6);
+	color:rgba(129, 129, 129, 0.4);
 
 }
+
