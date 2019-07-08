@@ -47,27 +47,21 @@
         </div>
           <div class="row justify-content-center pb-3">
             <div class="col-10">
-              <div class="row justify-content-center pt-5" *ngFor="let foro of foros">
+              <div class="row justify-content-center pt-5" *ngFor="let project of projects2">
                   <div class="col-8" id="fila">
-                    <h4 class="text-center  palabras">{{foro.nombreProyecto}}</h4>
+                    <h4 class="text-center  palabras">{{project.nombreproyecto}}</h4>
                   </div>
                   <div class="col-10" id="fila">
-                    <a class="link pt-3"  routerLink="/"><p class="text-justify">{{foro.descripcion}}</p></a>
+                    <a class="link pt-3"  routerLink="/"><p class="text-justify">{{project.descripcion}}</p></a>
+                  </div>
+                  <div class="col-10 pt-2" id="fila">
+                      <h6 class="text-justify">categoria</h6>
                   </div>
               </div>
               <div class="row" style="height:80px;"></div>       
             </div>
           </div>
-<<<<<<< HEAD
           <div class="row pb-5"></div>
-=======
-          <div class="row pb-5">
-            <div class="col-8 pl-5">
-              <a class="px-3 py-2 boton" routerLink="/actualizar">Actualizar</a>
-            </div>
-          </div>
-        </div>
->>>>>>> 714534011901df17df14e7aa14e24babe0b7f9da
       </div>
     </div>
     <div class="row" style="height:200px;">

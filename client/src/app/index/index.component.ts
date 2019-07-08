@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProjectServiceService} from '../services/project-service.service'
+import {AuthenticationService, UserDetails} from '../authentication.service'
 
 @Component({
   selector: 'app-index',
@@ -8,8 +9,8 @@ import {ProjectServiceService} from '../services/project-service.service'
 })
 export class IndexComponent implements OnInit {
   projects: any = [];
-  
-  constructor(private projectService: ProjectServiceService) { 
+  details: UserDetails
+  constructor(private projectService: ProjectServiceService,private auth: AuthenticationService) { 
     
   }
 
@@ -20,6 +21,15 @@ export class IndexComponent implements OnInit {
         console.log(this.projects)
       },
       err => console.log(err)
+    )
+
+    this.auth.profile().subscribe(
+      user =>{
+        this.details = user
+      },
+      err => {
+        console.error(err)
+      }
     )
   }
   irAProyecto(id: String){

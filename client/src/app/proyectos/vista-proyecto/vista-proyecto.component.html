@@ -7,20 +7,20 @@
     <a class="text-hide"  routerLink="/"></a>
   </div>
   <div class="row justify-content-center">
-    <p class="letras" id="nombrePro">Nombre del proyecto</p>
+    <p class="letras" id="nombrePro">{{projects.detalle[0].nombreproyecto}}</p>
   </div>
   <div class="row justify-content-center" >
     <div class="col-7 contlogin" >
       <div class="row justify-content-center pt-5">
         <div class="col-10  contlogin">
           <p>Descripcion</p>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem facere doloribus error ut rerum sapiente, debitis fugit suscipit soluta at asperiores distinctio perspiciatis quae dolorum culpa cumque expedita libero voluptas?</p>
+          <p>{{projects.detalle[0].descripcion}}</p>
         </div>
       </div> 
       <div class="row justify-content-center">
         <div class="col-10 contlogin">
           <p>Alcance</p>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus, quae tempora, magni, ducimus quas odio repudiandae illum unde laborum libero corporis. Impedit cumque minima placeat suscipit in ea, culpa nulla.</p>
+          <p>{{projects.detalle[0].alcance}}</p>
         </div>
       </div>
       <div class="row justify-content-center pt-3">

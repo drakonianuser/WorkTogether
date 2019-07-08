@@ -39,9 +39,49 @@ export class CrearProyectoComponent implements OnInit {
   }
 
   saveNewDetalle(){
+    if(this.detallePro.nombreproyecto!=""){
+      if(this.detallePro.descripcion!=""){
+        if(this.detallePro.descripcion.length<65535){
+          if(this.detallePro.alcance!=""){
+            if(this.detallePro.alcance.length<255){ 
+              this.ProjectService.createDetalle(this.detallePro.nombreproyecto,this.detallePro)
+                .subscribe(
+                  res => {
+                    var nombre = {
+                    iddetalleproyecto: ""
+                    }
+                    nombre = res[0]
+                    this.project.detalleproyecto_iddetalleproyecto = parseInt(nombre.iddetalleproyecto)
+                    this.project.categoria_idcategoria = 1
+                    this.project.users_idusuarios = this.details.idusuarios
+                    this.ProjectService.saveProject(this.project)
+                      .subscribe(
+                        res =>{
+                          console.log(res)
+                        },
+                        err => console.error(err)
+                        )
+                  },
+                  err => console.error(err)
+                  )
+            }else{
+              alert("El alcance no debe superar los 255 caracteres")
+            }
+          }else{
+            alert("Debe ingresar un alcance")
+          }
+        }else{
+          alert("La descripción no debe superar los 65.535 caracteres")
+        }
+      }else{
+        alert("Debe ingresar una descripción")
+      }
+    }else{
+      alert("Debe ingresar un nombre para el proyecto")
+    }
+    
 
 
- 
     this.ProjectService.createDetalle(this.detallePro.nombreproyecto,this.detallePro)
       .subscribe(
         res => {
@@ -62,6 +102,5 @@ export class CrearProyectoComponent implements OnInit {
         },
         err => console.error(err)
       )
-
   }
 }
