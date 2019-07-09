@@ -27,7 +27,7 @@ class ProjectsController {
              return res.json({'proyecto':pro,'correo':correo}); 
         }
         res.status(404).json({text: "El proyecto no existe"}); 
-    }
+    }  
 
     /**
      * create 

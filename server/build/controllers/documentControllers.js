@@ -41,8 +41,10 @@ class DocumentController {
      */
     Create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            const {id} = req.params
             yield database_1.default.query('INSERT INTO documentacion SET ?', [req.body]);
-            res.send("document create");
+            res.send(yield database_1.default.query('SELECT iddocumentacion FROM documentacion WHERE contenido = ?', [id]));
+
         });
     }
     /**

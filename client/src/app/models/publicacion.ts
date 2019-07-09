@@ -1,6 +1,6 @@
 export interface publicacion{
-    idpublicacion?: number;
+    idpublicaciones?: number;
     proyectos_idproyectos: number;
-    proyectos_usuarios_idusuarios: number;
+    proyectos_users_idusuarios: number;
     detallepublicacion_iddetallepublicacion: number;
 }

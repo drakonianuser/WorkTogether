@@ -24,3 +24,15 @@
 	color:rgba(8, 8, 8, 0.6);
 
 }
+.link{
+
+	font:bold 110% serif;
+	text-decoration: none;
+    color: rgba(0,0,0,0.6);
+	transition:background 1s;
+}
+.link:hover{
+
+	color:rgba(129, 129, 129, 0.4);
+
+}

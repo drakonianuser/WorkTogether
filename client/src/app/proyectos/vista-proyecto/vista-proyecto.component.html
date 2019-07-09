@@ -24,37 +24,32 @@
         </div>
       </div>
       <div class="row justify-content-center pt-3">
-        <div class="col-2">
-          <p>Atualizaciones</p>
+        <div class="col-3">
+          <p>Publicaciones/Entradas</p>
         </div>
       </div>
-      <div>
-        <div class="row justify-content-center pt-3">
-          <div class="col-10  contlogin">
-            <p>Descripcion</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem facere doloribus error ut rerum sapiente, debitis fugit suscipit soluta at asperiores distinctio perspiciatis quae dolorum culpa cumque expedita libero voluptas?</p>
-          </div>
-        </div> 
-        <div class="row justify-content-center pb-4">
-          <div class="col-10 contlogin">
-            <p>Alcance</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus, quae tempora, magni, ducimus quas odio repudiandae illum unde laborum libero corporis. Impedit cumque minima placeat suscipit in ea, culpa nulla.</p>
-          </div>
-        </div>
-      </div>      
-      <div class="row justify-content-center pb-3">
+      <ng-container *ngFor="let publicacion of publicaciones.publicacion">
+        <ng-container  *ngFor="let detallepu of publicaciones.detalle">
+          <div *ngIf="publicacion.detallepublicacion_iddetallepublicacion == detallepu.iddetallepublicacion">
+            <div class="row justify-content-center pt-3">
+              <div class="col-10  contlogin">
+                <h6>Version</h6>
+                <p>{{detallepu.ver}}</p>
+              </div>
+            </div> 
+            <div class="row justify-content-center pb-4">
+              <div class="col-10 contlogin" >
+                <h6>Resumen</h6>
+                <a  class="link pt-3"[routerLink]="['/documentacion', projects.proyecto[0].idproyectos, publicacion.idpublicaciones, detallepu.iddetallepublicacion]"><p>{{detallepu.resumen}}</p></a>
+                <h6>{{detallepu.fechapublicacion.substring(0,10)}}</h6>
+              </div>
+            </div>
+          </div> 
+      </ng-container>
+    </ng-container>  
+      <div class="row justify-content-center pb-3" *ngIf="projects.proyecto[0].users_idusuarios==details.idusuarios">
         <div class="col-2">
-          <a class="px-3 py-2 boton" href="#">Contacto</a>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-          <div class="col-2">
-            <p>Comentarios</p>
-          </div>
-      </div> 
-      <div class="row justify-content-center pb-5">
-        <div class="col-10 contlogin">
-          <p>Aqui va el plugin</p>
+          <a class="px-3 py-2 boton" [routerLink]="['/actualizar', projects.proyecto[0].idproyectos]">Agregar</a>
         </div>
       </div>
     </div>

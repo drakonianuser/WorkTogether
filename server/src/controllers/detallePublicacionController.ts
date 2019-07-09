@@ -9,7 +9,7 @@ class ProjectsController {
 
     public async list(req: Request, res: Response) {
         const { idproyecto } = req.params;
-        const publicaciones = await pool.query('SELECT * FROM publicaciones WHERE proyectos_idproyectos = ?',[idproyecto]);
+        const publicaciones = await pool.query('SELECT * FROM publicaciones WHERE idpublicaciones = ?',[idproyecto]);
         const j = publicaciones;
         let detallers:JSON[]= new Array(j.length) ;
         for (let index = 0; index < j.length; index++) {
@@ -21,7 +21,7 @@ class ProjectsController {
     }
 
     /**
-     * one
+     * one 
     */
     public async onepublicacion(req: Request, res: Response): Promise<any> {
         const { id } = req.params;

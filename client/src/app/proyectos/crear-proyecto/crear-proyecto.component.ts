@@ -80,27 +80,5 @@ export class CrearProyectoComponent implements OnInit {
       alert("Debe ingresar un nombre para el proyecto")
     }
     
-
-
-    this.ProjectService.createDetalle(this.detallePro.nombreproyecto,this.detallePro)
-      .subscribe(
-        res => {
-          var nombre = {
-            iddetalleproyecto: ""
-          }
-          nombre = res[0]
-          this.project.detalleproyecto_iddetalleproyecto = parseInt(nombre.iddetalleproyecto)
-          this.project.categoria_idcategoria = 1
-          this.project.users_idusuarios = this.details.idusuarios
-          this.ProjectService.saveProject(this.project)
-          .subscribe(
-            res =>{
-              console.log(res)
-            },
-            err => console.error(err)
-          )
-        },
-        err => console.error(err)
-      )
   }
 }

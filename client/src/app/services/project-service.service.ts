@@ -64,11 +64,11 @@ export class ProjectServiceService {
   getListaDetallePublicacion(id: String){
     return this.http.get(`${this.API_URIDetallePubli}/${id}`);
   }
-  getOneDetallePu(id: String){
-    return this.http.get(`${this.API_URIDetallePubli}/${id}`)
+  getOneDetallePu(id: String, id2: String){
+    return this.http.get(`${this.API_URIDetallePubli}/${id}/${id2}`)
   }
-  createDetallePu(detallepu: detallepublicacion){
-    return this.http.post(`${this.API_URIDetallePubli}`,detallepu);
+  createDetallePu(id: String,detallepu: detallepublicacion){
+    return this.http.post(`${this.API_URIDetallePubli}/${id}`,detallepu);
   }
   updateDetallePu(id: String, detallepu: detallepublicacion){
     return this.http.put(`${this.API_URIDetallePubli}/${id}`,detallepu);
@@ -81,16 +81,16 @@ export class ProjectServiceService {
   getOneDocumen(id: String){
     return this.http.get(`${this.API_URIDocumen}/${id}`) //revisar
   }
-  createDocumen(documentacion: documentacion){
-    return this.http.post(`${this.API_URIDocumen}`,documentacion);
+  createDocumen(id: String,documentacion: documentacion){
+    return this.http.post(`${this.API_URIDocumen}/${id}`,documentacion);
   }
   updateDocumen(id: String, documentacion: documentacion){
     return this.http.put(`${this.API_URIDocumen}/${id}`,documentacion);
   }
 
   //Imagen
-  getListaImagen(id: String){
-    return this.http.get(`${this.API_URImagen}/${id}`);
+  getListaImagen(){
+    return this.http.get(`${this.API_URImagen}`);
   }
   createImagen(imagen: imagen){
     return this.http.post(`${this.API_URImagen}`,imagen);

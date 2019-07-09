@@ -52,7 +52,7 @@
                     <h4 class="text-center  palabras">{{project.nombreproyecto}}</h4>
                   </div>
                   <div class="col-10" id="fila">
-                    <a class="link pt-3"  routerLink="/"><p class="text-justify">{{project.descripcion}}</p></a>
+                    <a class="link pt-3"  [routerLink]="['/proyecto', project.iddetalleproyecto]"><p class="text-justify">{{project.descripcion}}</p></a>
                   </div>
                   <div class="col-10 pt-2" id="fila">
                       <h6 class="text-justify">categoria</h6>

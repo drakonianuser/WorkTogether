@@ -2,21 +2,21 @@
 <div class="container-fluid">
   <div class="row" style="height:100px;"></div>
   <div class="row justify-content-center">
-    <h6 class="letras">Nombre proyecto</h6>
+    <h6 class="letras">{{project2.nombreproyecto}}</h6>
   </div>
   <div class="row justify-content-center" >
     <div class="col-7 contlogin">
       <div class="row justify-content-center pt-5">
         <div class="col-5 contlogin">
-          <p class="text-left">Versión</p>
+          <p class="text-left">{{publicacion[0].ver}}</p>
         </div>
         <div class="col-5 contlogin">
-          <p class="text-right">fecha</p>
+          <p class="text-right">{{publicacion[0].fechapublicacion.substring(0,10)}}</p>
         </div>
       </div> 
       <div class="row justify-content-center pb-5">
         <div class="col-10 contlogin">
-          <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam voluptatem aperiam eos maiores deleniti numquam ipsum? Tenetur incidunt libero, harum pariatur nobis, quasi nisi ipsum velit voluptas consectetur, possimus vel.</p>
+          <p class="text-justify">{{publicacion[0].resumen}}</p>
         </div>
       </div>
       <div class="row justify-content-center pb-5">
@@ -24,29 +24,36 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-12">
-          <p class="text-center letras2">Avences</p>
+          <p class="text-center letras2">Avances</p>
         </div>
       </div> 
-      <div class="row justify-content-center pb-5" *ngFor="let documento of documentacion">
-        <div class="col-10 contlogin">
-          <p class="tesxt-justify">{{documento.texto}}</p>
-        </div>
-        <div class="col-10 contlogin">
-          <img src={{documento.imagen}} alt="">
-        </div>
+      <ng-container *ngFor="let documentacion of documentaciones">
+        <ng-container  *ngFor="let imagen of imagenes">
+          <div class="row justify-content-center pb-2">
+            <div class="col-10 contlogin" *ngIf="imagen.iddocumentacion==documentacion.iddocumentacion">
+              <p class="tesxt-justify">{{documentacion.contenido}}</p>
+            </div>
+            <div class="col-10 contlogin" *ngIf="imagen.iddocumentacion==documentacion.iddocumentacion">
+              <img src="{{imagen.imagenurl}}"alt="">
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>  
+      <div class="row justify-content-center pt-4 pb-3" *ngIf="idusuario==details.idusuarios">
+        <button class="link" (click)="boton()">Nuevo Avance</button>
       </div>
-      <div class="row justify-content-center pt-4 pb-3">
-        <a class="link" href="#">Nuevo Avance</a>
-      </div>
-      <div class="row justify-content-center pb-2">
+      <div class="row justify-content-center pb-2" *ngIf="oprimido==true">
         <div class="col-8">
-          <textarea class="form-control" id="resumen" rows="4" placeholder="Texto"></textarea>
+          <textarea class="form-control" id="resumen" rows="4" placeholder="Texto" [(ngModel)]="documentacion.contenido"></textarea>
         </div>
       </div>
-      <div class="row justify-content-center pb-5">
+      <div class="row justify-content-center pb-5"  *ngIf="oprimido==true">
         <div class="col-6">
-            <input type="texto" class="form-control" id="link" placeholder="Link">
+            <input type="texto" class="form-control" id="link" placeholder="Link" [(ngModel)]="imagen.imagenurl">
         </div>
+      </div>
+      <div class="row justify-content-center pt-4 pb-3" *ngIf="oprimido==true">
+        <button class="link" (click)="savedetalle()">Guardar</button>
       </div>
       <div class="row justify-content-center">
         <div class="col-12">

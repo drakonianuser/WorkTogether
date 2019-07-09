@@ -62,6 +62,8 @@ class Server {
             console.log('Server en puerto', this.app.get('port'));
         });
     }
+
+    
 }
 const server = new Server();
 server.start();

@@ -10,12 +10,13 @@ class DetallePublicacionRoutes {
         this.router = express_1.Router();
         this.config();
     }
-    config() {
+    config() {  
         this.router.get('/api/:idproyecto', detallePublicacionController_1.default.list);
-        this.router.get('/api/:id/:detalle', detallePublicacionController_1.default.onepublicacion);
-        this.router.post('/api/', detallePublicacionController_1.default.create);
+        this.router.get('/api/:id/:id2', detallePublicacionController_1.default.onepublicacion);
+        this.router.post('/api/:id', detallePublicacionController_1.default.create);
         this.router.put('/api/:id', detallePublicacionController_1.default.update);
     }
-}
+}  
 const detallePublicacionRoutes = new DetallePublicacionRoutes();
-exports.default = detallePublicacionRoutes.router;
+exports.default = detallePublicacionRoutes.router; 
+  

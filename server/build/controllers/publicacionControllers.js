@@ -19,15 +19,15 @@ class PublicacionController {
         return __awaiter(this, void 0, void 0, function* () {
             const { idproyecto } = req.params;
             const publicaciones = yield database_1.default.query('SELECT * FROM publicaciones WHERE proyectos_idproyectos = ?', [idproyecto]);
-            const detalle = yield database_1.default.query('select * from detallepublicacio');
+            const detalle = yield database_1.default.query('select * from detallepublicacion');
             res.json({ "publicacion": publicaciones, "detalle": detalle });
-        });
+        }); 
     }
     /**
      * oneproject
     */
     onepublicacion(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
+        return __awaiter(this, void 0, void 0, function* () { 
             const { detalle } = req.params;
             const { idproyecto } = req.params;
             const project = yield database_1.default.query('SELECT * FROM publicaciones WHERE idpublicacion , proyectos_idproyectos values ?', [detalle, idproyecto]);
@@ -43,8 +43,7 @@ class PublicacionController {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const estatus = yield database_1.default.query('INSERT INTO publicaciones set ?', [req.body]);
-            res.send("project create");
-            res.json(estatus);
+            res.send("project create"); 
         });
     }
     /**

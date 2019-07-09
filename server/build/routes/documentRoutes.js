@@ -16,7 +16,7 @@ class DocumentRoutes {
     config() {
         this.router.get('/api/:idproyecto', documentControllers_1.default.list);
         this.router.get('/api/:idproyecto/:idDocumento', documentControllers_1.default.onedocument);
-        this.router.post('/api/', documentControllers_1.default.Create);
+        this.router.post('/api/:id', documentControllers_1.default.Create);
         this.router.put('/api/:iddocumentacion', documentControllers_1.default.update);
     }
 }

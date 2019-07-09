@@ -41,7 +41,9 @@ const routes: Route[]=[
   {path: 'CrearProyecto', component: CrearProyectoComponent},
   {path: 'editar', component: EditarPerfilComponent},
   {path: 'proyecto/:id', component: VistaProyectoComponent},
-  {path: 'documentacion', component: DocumentacionComponent}
+  {path: 'documentacion', component: DocumentacionComponent},
+  {path: 'actualizar/:id', component: ActualizarProyectoComponent},
+  {path: 'documentacion/:idproyecto/:idpublicacion/:iddetallepublicacion', component: DocumentacionComponent}
 
 ]
 

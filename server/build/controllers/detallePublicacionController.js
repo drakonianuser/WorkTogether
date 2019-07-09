@@ -36,9 +36,7 @@ class ProjectsController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const project = yield database_1.default.query('SELECT * FROM detallepublicacion WHERE iddetallepublicacion = ?', [id]);
-            if (project.length > 0) {
-                return res.json(project[0]);
-            }
+            res.json(project)
             res.status(404).json({ text: "La publicacion  no existe" });
         });
     }
@@ -47,10 +45,9 @@ class ProjectsController {
      */
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.body);
-            const respuesta = yield database_1.default.query('INSERT INTO detallepublicacion set ?', [req.body]);
-            res.send("detallepublicacion create");
-            console.log(respuesta);
+
+            yield database_1.default.query('INSERT INTO detallepublicacion set ?', [req.body]);
+            res.send(yield database_1.default.query('SELECT iddetallepublicacion FROM detallepublicacion WHERE resumen = ?', [id]));
         });
     }
     /**
