@@ -10,7 +10,8 @@ import {AuthenticationService, UserDetails} from '../../authentication.service'
   styleUrls: ['./crear-proyecto.component.css']
 })
 export class CrearProyectoComponent implements OnInit {
-
+  categorias: any=[];
+  categoria: String;
   detallePro: detallepro = {
     iddetalleproyecto: 0,
     nombreproyecto: '',
@@ -27,6 +28,12 @@ export class CrearProyectoComponent implements OnInit {
   constructor(private ProjectService: ProjectServiceService, private auth: AuthenticationService) { }
   details: UserDetails
   ngOnInit() {
+    this.ProjectService.getCategoria().subscribe(
+      res =>{
+        this.categorias = res
+      },
+      err=>console.log(err)
+    )
     this.auth.profile().subscribe(
       user =>{
         this.details = user
@@ -37,8 +44,11 @@ export class CrearProyectoComponent implements OnInit {
     )
 
   }
-
+  imprimir(){
+    console.log(this.categoria)
+  }
   saveNewDetalle(){
+    const categoria = document.getElementsByName("categoria")
     if(this.detallePro.nombreproyecto!=""){
       if(this.detallePro.descripcion!=""){
         if(this.detallePro.descripcion.length<65535){

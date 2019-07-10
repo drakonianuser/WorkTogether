@@ -19,8 +19,8 @@
           <p class="text-justify">{{publicacion[0].resumen}}</p>
         </div>
       </div>
-      <div class="row justify-content-center pb-5">
-        <a class="link" href="#">Contacto</a>
+      <div class="row justify-content-center pb-5" *ngIf="auth.isLoggedIn()">
+        <button (click)="correo()" class="link" >Contacto</button>
       </div>
       <div class="row justify-content-center">
         <div class="col-12">
@@ -39,9 +39,11 @@
           </div>
         </ng-container>
       </ng-container>  
+      <ng-container *ngIf="auth.isLoggedIn()">
       <div class="row justify-content-center pt-4 pb-3" *ngIf="idusuario==details.idusuarios">
         <button class="link" (click)="boton()">Nuevo Avance</button>
       </div>
+    </ng-container>
       <div class="row justify-content-center pb-2" *ngIf="oprimido==true">
         <div class="col-8">
           <textarea class="form-control" id="resumen" rows="4" placeholder="Texto" [(ngModel)]="documentacion.contenido"></textarea>
@@ -59,6 +61,7 @@
         <div class="col-12">
           <p class="text-center letras2">Comentarios</p>
         </div>
+        <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="" data-numposts="3"></div>
       </div> 
       <div class="row" style="height:100px;"></div>
     </div>

@@ -13,6 +13,7 @@ export class DocumentacionComponent implements OnInit {
   publicacion: any=[];
   project: any=[];
   project2: any=[];
+  usu: any=[];
   oprimido: Boolean = false
   idusuario: String = ""
   details: UserDetails
@@ -32,7 +33,7 @@ export class DocumentacionComponent implements OnInit {
 
   documentaciones: any=[];
   imagenes: any=[];
-
+  Nombre: ""
 
   constructor(private zone: NgZone,private projectService: ProjectServiceService,private auth: AuthenticationService,private router: Router, private activeRouter: ActivatedRoute) { }
 
@@ -137,5 +138,40 @@ export class DocumentacionComponent implements OnInit {
     )
 
   }
+
+  correo() {
+    this.projectService.getOneUser(this.idusuario).subscribe(
+      res=>{
+        this.usu = res
+        let user = {
+          name: this.details.nombre+" "+this.details.apellidos,
+          email: this.usu.correo,
+          nombreProyecto: this.project2.nombreproyecto,
+          version: this.publicacion[0].ver,
+          fecha: this.publicacion[0].fechapublicacion.substring(0,10),
+          celular: this.details.celular,
+          email2: this.details.correo
+        }
+
+        this.projectService.sendEmail("http://localhost:3000/sendmail", user).subscribe(
+      
+          data => {
+            let res:any = data; 
+            console.log(
+              `👏 > 👏 > 👏 > 👏 ${user.name} is successfully register and mail has been sent and the message id is ${res.messageId}`
+            );
+          },
+          err => {
+            console.log(err);
+          },() => {
+          }
+        );
+      },
+      err =>console.log(err)
+    )
+
+
+  }
+
 
 }

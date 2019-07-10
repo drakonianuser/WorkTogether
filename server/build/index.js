@@ -20,6 +20,8 @@ const detallePublicacionesRoutes_1 = __importDefault(require("./routes/detallePu
 const imangenesRoutes_1 = __importDefault(require("./routes/imangenesRoutes"));
 const reportesRoutes_1 = __importDefault(require("./routes/reportesRoutes"));
 const Users = require("./routes/Users");
+const nodemailer = require("nodemailer");
+const correo = require("./correo.json");
 //import  from "./routes/";
 class Server {
     constructor() {
@@ -40,7 +42,48 @@ class Server {
         }));
         this.app.use(passport_1.default.initialize());
         this.app.use(passport_1.default.session());
+
+        
+    this.app.post("/sendmail", (req, res) => {
+        console.log("request came");
+        let user = req.body;
+        sendMail(user, info => {
+          console.log(`The mail has beed send 😃 and the id is ${info.messageId}`);
+          res.send(info);
+        });
+      });
+
+      async function sendMail(user, callback) {
+        // create reusable transporter object using the default SMTP transport
+        let transporter = nodemailer.createTransport({
+          host: "smtp.gmail.com",
+          port: 587,
+          secure: false, // true for 465, false for other ports
+          auth: {
+            user: correo.email,
+            pass: correo.password
+          }
+        });
+      
+        let mailOptions = { 
+          from: '"Worktogether"<santiagopena2001@gmail.com>', // sender address
+          to: user.email, // list of receivers
+          subject: "Solicitud de apoyo "+user.name, // Subject line
+          html: `<h3>Me gustaría apoyarte con el desarrollo de tu proyecto: ${user.nombreProyecto}
+           </h3> <h3>en la versión: ${user.version}</h3> <h3>publicado: ${user.fecha}</h3>
+          <h4> Atentamente: ${user.name} celular: ${user.celular} correo: ${user.email2}</h4>`
+        };
+       
+        // send mail with defined transport object
+        let info = await transporter.sendMail(mailOptions);
+      
+        callback(info);
+      }
+
     }
+
+
+   
     //rutas
     routes() {
         this.app.use('/', indexRoutes_1.default);
@@ -63,7 +106,6 @@ class Server {
         });
     }
 
-    
 }
 const server = new Server();
 server.start();
