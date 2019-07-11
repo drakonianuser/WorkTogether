@@ -36,13 +36,13 @@ const routes: Route[]=[
   {path: 'proyecto', component: VistaProyectoComponent},
   {path: 'registro', component: RegistroComponent},
   {path: 'recuperar', component: RecuperarContra1Component},
-  {path: 'recuperar2', component: RecuperarContra2Component},
+  {path: 'recuperar2/:id', component: RecuperarContra2Component},
   {path: 'actualizar', component: ActualizarProyectoComponent},
   {path: 'CrearProyecto', component: CrearProyectoComponent},
   {path: 'editar', component: EditarPerfilComponent},
   {path: 'proyecto/:id', component: VistaProyectoComponent},
   {path: 'documentacion', component: DocumentacionComponent},
-  {path: 'actualizar/:id', component: ActualizarProyectoComponent},
+  {path: 'actualizar/:id/:iddetalle', component: ActualizarProyectoComponent},
   {path: 'documentacion/:idproyecto/:idpublicacion/:iddetallepublicacion', component: DocumentacionComponent}
 
 ]

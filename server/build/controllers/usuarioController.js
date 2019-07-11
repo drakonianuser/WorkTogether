@@ -72,10 +72,11 @@ class UsuarioController {
     Userxcoreo(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { correo} = req.params
-            const usuario = yield database_1.default.query('select * from users where correo = ?'[correo]);
+            const usuario = yield database_1.default.query('select * from users where correo = ?',[correo]);
             res.json(usuario);
+            console.log(usuario)
         });
-    }
+    } 
 }
 const usuarioController = new UsuarioController();
 exports.default = usuarioController;

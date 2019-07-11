@@ -20,7 +20,7 @@ export class EditarPerfilComponent implements OnInit {
     correo: "",
     password: "",
     tipousuario: "",
-    celular: null
+    celular: 0
   }
 
   constructor(private ProjectService: ProjectServiceService, private auth: AuthenticationService, private router: Router) { }
@@ -37,12 +37,28 @@ export class EditarPerfilComponent implements OnInit {
   }
 
   updateUser(){
-    this.user.celular = parseInt(this.numero.number)
-    this.user.idusuarios = this.details.idusuarios
-    this.user.password = this.details.password
-    this.user.tipousuario = this.details.tipousuario
-
-    this.ProjectService.updateUser(this.details.idusuarios.toString(), this.user)
+    if(this.user.nombre=="" && this.user.apellidos=="" && this.user.correo=="" && this.numero.number==""){
+      alert("Debe ingresar al menos un campo a modificar")
+    }else{
+      this.user.idusuarios = this.details.idusuarios
+      this.user.password = this.details.password
+      this.user.tipousuario = this.details.tipousuario
+      if(this.user.nombre==""){
+        this.user.nombre = this.details.nombre
+      }
+      if(this.user.apellidos==""){
+        this.user.apellidos = this.details.apellidos
+      }
+      if(this.user.correo==""){
+        this.user.correo = this.details.correo
+      }
+      if(this.numero.number==""){
+        this.user.celular = this.details.celular
+      }else{
+        this.user.celular = parseInt(this.numero.number)
+        alert("entro"+this.user.celular)
+      }
+      this.ProjectService.updateUser(this.details.idusuarios.toString(), this.user)
       .subscribe(
         res => {
           console.log(res)
@@ -50,6 +66,8 @@ export class EditarPerfilComponent implements OnInit {
         },
         err => console.log(err)
       )
+    }
+ 
   }
 
 }

@@ -3,7 +3,7 @@ import {detallepro} from '../../models/detallepro'
 import {project} from '../../models/project'
 import {ProjectServiceService} from '../../services/project-service.service'
 import {AuthenticationService, UserDetails} from '../../authentication.service'
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-crear-proyecto',
   templateUrl: './crear-proyecto.component.html',
@@ -11,7 +11,9 @@ import {AuthenticationService, UserDetails} from '../../authentication.service'
 })
 export class CrearProyectoComponent implements OnInit {
   categorias: any=[];
-  categoria: String;
+  categoria = {
+    categoria: 0
+  }
   detallePro: detallepro = {
     iddetalleproyecto: 0,
     nombreproyecto: '',
@@ -25,7 +27,7 @@ export class CrearProyectoComponent implements OnInit {
     detalleproyecto_iddetalleproyecto: 0,
     users_idusuarios: 0
   }
-  constructor(private ProjectService: ProjectServiceService, private auth: AuthenticationService) { }
+  constructor(private ProjectService: ProjectServiceService, private auth: AuthenticationService, private router: Router) { }
   details: UserDetails
   ngOnInit() {
     this.ProjectService.getCategoria().subscribe(
@@ -44,11 +46,7 @@ export class CrearProyectoComponent implements OnInit {
     )
 
   }
-  imprimir(){
-    console.log(this.categoria)
-  }
   saveNewDetalle(){
-    const categoria = document.getElementsByName("categoria")
     if(this.detallePro.nombreproyecto!=""){
       if(this.detallePro.descripcion!=""){
         if(this.detallePro.descripcion.length<65535){
@@ -62,12 +60,13 @@ export class CrearProyectoComponent implements OnInit {
                     }
                     nombre = res[0]
                     this.project.detalleproyecto_iddetalleproyecto = parseInt(nombre.iddetalleproyecto)
-                    this.project.categoria_idcategoria = 1
+                    this.project.categoria_idcategoria = this.categoria.categoria
                     this.project.users_idusuarios = this.details.idusuarios
                     this.ProjectService.saveProject(this.project)
                       .subscribe(
                         res =>{
                           console.log(res)
+                          this.router.navigateByUrl('/perfil')
                         },
                         err => console.error(err)
                         )

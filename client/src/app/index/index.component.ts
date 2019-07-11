@@ -9,12 +9,19 @@ import {AuthenticationService, UserDetails} from '../authentication.service'
 })
 export class IndexComponent implements OnInit {
   projects: any = [];
+  categorias: any = [];
   details: UserDetails
   constructor(private projectService: ProjectServiceService,private auth: AuthenticationService) { 
     
   }
 
   ngOnInit() {
+    this.projectService.getCategoria().subscribe(
+      res=>{
+        this.categorias = res;
+      },
+      err => console.log(err)
+    )
     this.projectService.getProjectLista().subscribe(
       res => {
         this.projects = res;

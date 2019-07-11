@@ -99,44 +99,47 @@ export class DocumentacionComponent implements OnInit {
     this.oprimido=true
   }
   savedetalle(){
-    this.auth.profile().subscribe(
-      user =>{
-        this.details = user
-        this.documentacion.publicaciones_idpublicaciones = this.activeRouter.snapshot.params.idpublicacion
-        this.documentacion.publicaciones_proyectos_idproyectos = this.activeRouter.snapshot.params.idproyecto
-        this.documentacion.publicaciones_proyectos_users_idusuarios = this.details.idusuarios
-        this.projectService.createDocumen(this.documentacion.contenido,this.documentacion)
-         .subscribe(
-           res =>{
-            var id = {
-              iddocumentacion: ""
-            }
-            id = res[0]
-            this.imagen.iddocumentacion = parseInt(id.iddocumentacion)
-            this.projectService.createImagen(this.imagen)
-             .subscribe(
-               res =>{
-                 console.log(res)
-                 this.zone.runOutsideAngular(() => {
-                  location.reload();
-                 });
-               },
-               err => {
-                 console.log(err)
-                 this.zone.runOutsideAngular(() => {
-                  location.reload();
-                 });
-               }
-             )
-           },
-           err => console.log(err)
-         )
-      },
-      err => {
-        console.error(err)
-      }
-    )
-
+    if(this.documentacion.contenido==""){
+      alert("Debe ingresar un contenido para el avance")
+    }else{
+      this.auth.profile().subscribe(
+        user =>{
+          this.details = user
+          this.documentacion.publicaciones_idpublicaciones = this.activeRouter.snapshot.params.idpublicacion
+          this.documentacion.publicaciones_proyectos_idproyectos = this.activeRouter.snapshot.params.idproyecto
+          this.documentacion.publicaciones_proyectos_users_idusuarios = this.details.idusuarios
+          this.projectService.createDocumen(this.documentacion.contenido,this.documentacion)
+           .subscribe(
+             res =>{
+              var id = {
+                iddocumentacion: ""
+              }
+              id = res[0]
+              this.imagen.iddocumentacion = parseInt(id.iddocumentacion)
+              this.projectService.createImagen(this.imagen)
+               .subscribe(
+                 res =>{
+                   console.log(res)
+                   this.zone.runOutsideAngular(() => {
+                    location.reload();
+                   });
+                 },
+                 err => {
+                   console.log(err)
+                   this.zone.runOutsideAngular(() => {
+                    location.reload();
+                   });
+                 }
+               )
+             },
+             err => console.log(err)
+           )
+        },
+        err => {
+          console.error(err)
+        }
+      )
+    }
   }
 
   correo() {

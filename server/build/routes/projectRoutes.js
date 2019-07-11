@@ -15,7 +15,7 @@ class ProjectRoutes {
         this.router.get('/api/:id', projectsController_1.default.oneproject);
         this.router.post('/api/', projectsController_1.default.create);
         this.router.put('/api/:id', projectsController_1.default.update);
-    }
+    } 
 }
 const projectRoutes = new ProjectRoutes();
 exports.default = projectRoutes.router;

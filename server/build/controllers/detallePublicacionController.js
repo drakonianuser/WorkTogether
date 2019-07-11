@@ -43,9 +43,9 @@ class ProjectsController {
     /**
      * create
      */
-    create(req, res) {
+    create(req, res) { 
         return __awaiter(this, void 0, void 0, function* () {
-
+            const { id} = req.params;
             yield database_1.default.query('INSERT INTO detallepublicacion set ?', [req.body]);
             res.send(yield database_1.default.query('SELECT iddetallepublicacion FROM detallepublicacion WHERE resumen = ?', [id]));
         });

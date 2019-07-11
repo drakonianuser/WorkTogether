@@ -129,9 +129,16 @@ export class ProjectServiceService {
     return this.http.put(`${this.API_URIUser}/${id}`, user);
   }
   getUserXCorreo(correo: String){
-    return this.http.get(`${this.API_URIUser}/${correo}`);
+    return this.http.get(`${this.API_URIUser}/${correo}/1`);
   }
+
+
+
+
   sendEmail(url, data) {
+    return this.http.post(url, data);
+  }
+  recuperar(url, data){
     return this.http.post(url, data);
   }
 }

@@ -15,7 +15,7 @@ class ComentariosRoutes {
         this.router.post('/api/', ComentariosController_1.default.create);
         this.router.put('/api/:id', ComentariosController_1.default.update);
         this.router.delete('/api/:id', ComentariosController_1.default.Delete);
-    }
-}
+    } 
+} 
 const comentariosRoutes = new ComentariosRoutes();
 exports.default = comentariosRoutes.router;

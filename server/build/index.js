@@ -43,6 +43,39 @@ class Server {
         this.app.use(passport_1.default.initialize());
         this.app.use(passport_1.default.session());
 
+    this.app.post("/recuperarcontra", (req, res) =>{
+      console.log("request came");
+      let user = req.body;
+      sendRecuperar(user, info =>{
+        console.log(`The mail has beed send 😃 and the id is ${info.messageId}`);
+        res.send(info);
+      });
+    });
+
+    async function sendRecuperar(user, callback){
+      let transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+          user: correo.email,
+          pass: correo.password
+        }
+      });
+
+      let mailOptions = { 
+        from: '"Worktogether"<santiagopena2001@gmail.com>', // sender address
+        to: user.email, // list of receivers
+        subject: "Recuperar cuenta WorkTogether ", // Subject line
+        html: `<h3>Se ha solicitado recuperar la contraseña de su cuenta registrada en Worktogether 
+         </h3> <h3>Ingrese al siguiente link para recuperar su contraseña: ${user.link}</h3>`
+      };
+      
+      // send mail with defined transport object
+      let info = await transporter.sendMail(mailOptions);
+    
+      callback(info);
+    }
         
     this.app.post("/sendmail", (req, res) => {
         console.log("request came");

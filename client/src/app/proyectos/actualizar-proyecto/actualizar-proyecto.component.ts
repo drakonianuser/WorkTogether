@@ -36,6 +36,8 @@ export class ActualizarProyectoComponent implements OnInit {
 
 
   ngOnInit() {
+    console.log(this.activeRouter.snapshot.params.id)
+    console.log(this.activeRouter.snapshot.params.iddetalle)
     this.auth.profile().subscribe(
       user =>{
         this.details = user
@@ -45,29 +47,46 @@ export class ActualizarProyectoComponent implements OnInit {
       }
     )
   }
+  imprimir(){
+    console.log(this.activeRouter.snapshot.params.id)
+    console.log(this.activeRouter.snapshot.params.iddetalle)
+  }
   saveNewDetalle(){
-    this.detallepublicacion.ver = parseFloat(this.number.ver)
-    this.projectService.createDetallePu(this.detallepublicacion.resumen,this.detallepublicacion)
-      .subscribe(
-        res => {
-          const params = this.activeRouter.snapshot.params;
-          this.publicacion.proyectos_idproyectos = params.id
-          this.publicacion.proyectos_users_idusuarios = this.details.idusuarios
-          var id = {
-            iddetallepublicacion: ""
-          }
-          id = res[0]
-          this.publicacion.detallepublicacion_iddetallepublicacion = parseInt(id.iddetallepublicacion)
-          this.projectService.createPublicacion(this.publicacion)
-           .subscribe(
-             res => {
-               console.log(res)
-             },
-             err => console.log(err)
-           )
-        },
-        err => console.log(err)
-      )
+    if(this.number.ver!=""){
+      if(this.detallepublicacion.resumen!=""){
+        this.detallepublicacion.ver = parseFloat(this.number.ver)
+        this.projectService.createDetallePu(this.detallepublicacion.resumen,this.detallepublicacion)
+          .subscribe(
+            res => {
+              this.publicacion.proyectos_idproyectos = this.activeRouter.snapshot.params.id
+              this.publicacion.proyectos_users_idusuarios = this.details.idusuarios
+              var id = {
+                iddetallepublicacion: ""
+              }
+              id = res[0]
+              this.publicacion.detallepublicacion_iddetallepublicacion = parseInt(id.iddetallepublicacion)
+              this.projectService.createPublicacion(this.publicacion)
+               .subscribe(
+                 res => {
+                   console.log(res)
+                   this.router.navigateByUrl('/proyecto/'+this.activeRouter.snapshot.params.iddetalle)
+                 },
+                 err => this.router.navigateByUrl('/proyecto/'+this.activeRouter.snapshot.params.iddetalle)
+                 
+               )
+            },
+            err =>     this.router.navigateByUrl('/proyecto/'+this.activeRouter.snapshot.params.iddetalle)
+          )
+      }else{
+        alert("Debe ingresar un resumen")
+        this.router.navigateByUrl('/actualizar/'+this.activeRouter.snapshot.params.id+"/"+this.activeRouter.snapshot.params.iddetalle)
+      }
+    }else{
+      alert("Debe ingresar una versión para su proyecto")
+      this.router.navigateByUrl('/actualizar/'+this.activeRouter.snapshot.params.id+"/"+this.activeRouter.snapshot.params.iddetalle)
+    }
+
+
   }
 
 }
