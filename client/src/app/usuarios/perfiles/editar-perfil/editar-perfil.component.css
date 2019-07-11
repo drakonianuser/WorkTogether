@@ -1,39 +1,30 @@
-.letras{
-
-    font: 400% serif;
-    color:rgba(255,255,255,0.8);
-
-}
 .contlogin{
 
     background: rgba(255,255,255,0.3);
     
 
 }
-.palabras{
-
-    font: 110% serif;
-    color:rgba(255, 255, 255, 0.6);
-
-}
-.boton{
-
-	font:bold 90% Verdana;
-	text-decoration: none;
-    color: rgba(255,255,255,0.6);
-    background:rgba(8, 8, 8, 0.8);
-	transition:background 1s;
-}
-.boton:hover{
-
-	background:white;
-	color:rgba(8, 8, 8, 0.6);
-
-}
 .link{
 
-    text-decoration: none;
-    font: 110% serif;
-    color:rgb(0,0,0);
+	font:bold 130% serif;
+	text-decoration: none;
+    color: rgba(0,0,0,0.6);
+	transition:background 1s;
+}
+.link:hover{
+
+	color:rgba(129, 129, 129, 0.4);
+
+}
+.palabras{
+
+    font:bold 150% serif;
+    color: rgba(0, 0, 0,0.6);
+
+}
+.letras{
+
+    font: 400% serif;
+    color:rgba(0,0,0,0.6);
 
 }
