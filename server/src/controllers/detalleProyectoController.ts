@@ -13,7 +13,7 @@ class DetalleProyectoController {
     }
 
     /**
-     * one
+     * one hello
     */
     public async one(req: Request, res: Response): Promise<any> {
         const { id }= req.params;
