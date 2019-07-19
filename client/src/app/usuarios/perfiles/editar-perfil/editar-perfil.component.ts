@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./editar-perfil.component.css']
 })
 export class EditarPerfilComponent implements OnInit {
+  usuario: any=[];
   numero = {
     number: ""
   }
@@ -58,16 +59,38 @@ export class EditarPerfilComponent implements OnInit {
         this.user.celular = parseInt(this.numero.number)
         alert("entro"+this.user.celular)
       }
-      this.ProjectService.updateUser(this.details.idusuarios.toString(), this.user)
-      .subscribe(
-        res => {
-          console.log(res)
-          this.router.navigateByUrl('/perfil')
-        },
-        err => console.log(err)
-      )
+      if(this.user.correo==""){
+        this.user.correo = this.details.correo
+      }else if(this.user.correo!=""){
+        if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(this.user.correo.toString())){
+          this.ProjectService.getUserXCorreo(this.user.correo).subscribe(
+            res =>{
+              this.usuario = res
+              console.log(this.usuario.length)
+              if(this.usuario.length>0){
+                alert("Ese correo ya se encuentra registrado")
+              }else{
+                this.ProjectService.updateUser(this.details.idusuarios.toString(), this.user)
+                .subscribe(
+                  res => {
+                    this.router.navigateByUrl('/perfil')
+                  },
+                  err => console.log(err)
+                )
+              }
+            }
+          )
+        }else{
+          alert("Debe digitar un correo valido")
+        }
+      }
+
     }
  
+  }
+
+  prueba(){
+
   }
 
 }

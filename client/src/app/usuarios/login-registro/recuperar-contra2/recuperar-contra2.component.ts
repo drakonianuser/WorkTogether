@@ -10,6 +10,10 @@ import { Router , ActivatedRoute} from '@angular/router';
 })
 export class RecuperarContra2Component implements OnInit {
   usuario: any=[];
+  password = {
+    password1: "",
+    password2: ""
+  }
   user: user = {
     idusuarios: 0,
     nombre: "",
@@ -25,11 +29,33 @@ export class RecuperarContra2Component implements OnInit {
     
   };
   recuperarcontra(){
-    this.ProjectService.getOneUser(this.activeRouter.snapshot.params.id).subscribe(
-      res=>{
-        console.log(res)
-      },
-      err => console.log(err)
-    )
+    if(this.password.password1=="" || this.password.password2==""){
+      alert("Debe rellenar los campos")
+    }else if(this.password.password1!= this.password.password2){
+      alert("Las contraseñas deben ser iguales")
+    }else{
+      this.ProjectService.getOneUser(this.activeRouter.snapshot.params.id).subscribe(
+        res=>{
+          console.log(res)
+          this.usuario =res
+          this.user.idusuarios = this.usuario.idusuarios
+          this.user.nombre = this.usuario.nombre
+          this.user.apellidos = this.usuario.apellidos
+          this.user.correo = this.usuario.correo
+          this.user.celular = this.usuario.celular
+          this.user.tipousuario = this.usuario.tipousuario
+          this.user.password= this.password.password1
+          console.log(this.user)
+          this.ProjectService.updateUser(this.activeRouter.snapshot.params.id,this.user).subscribe(
+            res=>{
+              console.log(res)
+              this.router.navigateByUrl('/login')
+            }
+          )
+        },
+        err => console.log(err)
+      )
+    }
+ 
   }
 }

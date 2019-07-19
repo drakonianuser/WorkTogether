@@ -19,6 +19,7 @@ export class IndexComponent implements OnInit {
     this.projectService.getCategoria().subscribe(
       res=>{
         this.categorias = res;
+        console.log(this.categorias)
       },
       err => console.log(err)
     )

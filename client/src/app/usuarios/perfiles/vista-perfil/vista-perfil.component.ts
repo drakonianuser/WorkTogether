@@ -10,11 +10,19 @@ export class VistaPerfilComponent implements OnInit {
   projects: any = [];
   projects2: any = [];
   projects3: any = [];
+  categorias: any = [];
   details: UserDetails
   constructor(private projectService: ProjectServiceService,private auth: AuthenticationService){}
   
 
   ngOnInit() {
+    this.projectService.getCategoria().subscribe(
+      res=>{
+        this.categorias = res;
+        console.log(this.categorias)
+      },
+      err => console.log(err)
+    )
     this.projectService.getProjectLista().subscribe(
       res => {
         this.projects = res;

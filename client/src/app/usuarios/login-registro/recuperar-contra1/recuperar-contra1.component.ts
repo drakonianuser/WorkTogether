@@ -43,6 +43,7 @@ export class RecuperarContra1Component implements OnInit {
               },
               err => {
                 console.log(err);
+                console.log("hola")
               },() => {
               }
             );

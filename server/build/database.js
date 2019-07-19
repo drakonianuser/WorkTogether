@@ -8,7 +8,7 @@ const keys_1 = __importDefault(require("./keys"));
 const pool = promise_mysql_1.default.createPool(keys_1.default.database);
 pool.getConnection()
     .then(connetion => {
-    pool.releaseConnection(connetion);
-    console.log('DB is connected');
+    pool.releaseConnection(connetion); 
+    console.log('DB is connected');  
 });
 exports.default = pool;

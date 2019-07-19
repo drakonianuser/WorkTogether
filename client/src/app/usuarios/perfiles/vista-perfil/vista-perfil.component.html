@@ -19,17 +19,17 @@
       <div class="col-6 contlogin" >
         <div class="row justify-content-center pt-5">
           <div class="col-10  contlogin">
-            <p class="palabras2">{{details?.nombre}}</p>
+            <p class="palabras2">Nombre: {{details?.nombre}}</p>
           </div>
         </div> 
         <div class="row justify-content-center">
           <div class="col-10 contlogin">
-            <p class="palabras2">{{details?.apellidos}}</p>
+            <p class="palabras2">Apellidos: {{details?.apellidos}}</p>
           </div>
         </div>
         <div class="row justify-content-center pb-3">
           <div class="col-10 contlogin">
-            <p class="palabras2">{{details?.correo}}</p>
+            <p class="palabras2">Correo: {{details?.correo}}</p>
           </div>
         </div>   
         <div class="row pb-3">
@@ -48,15 +48,19 @@
           <div class="row justify-content-center pb-3">
             <div class="col-10">
               <div class="row justify-content-center pt-5" *ngFor="let project of projects2">
-                  <div class="col-8" id="fila">
-                    <h4 class="text-center  palabras">{{project.nombreproyecto}}</h4>
-                  </div>
-                  <div class="col-10" id="fila">
-                    <a class="link pt-3"  [routerLink]="['/proyecto', project.iddetalleproyecto]"><p class="text-justify">{{project.descripcion}}</p></a>
-                  </div>
-                  <div class="col-10 pt-2" id="fila">
-                      <h6 class="text-justify">categoria</h6>
-                  </div>
+                  <ng-container *ngFor="let projects of projects.proyect">
+                    <ng-container *ngIf="projects.detalleproyecto_iddetalleproyecto==project.iddetalleproyecto">
+                      <div class="col-8" id="fila">
+                        <h4 class="text-center  palabras">{{project.nombreproyecto}}</h4>
+                      </div>
+                      <div class="col-10" id="fila">
+                        <a class="link pt-3"  [routerLink]="['/proyecto', project.iddetalleproyecto]"><p class="text-justify">Descripcion: {{project.descripcion}}</p></a>
+                        <ng-container *ngFor="let categoria of categorias">
+                            <h6 *ngIf="categoria.idcategoria==projects.categoria_idcategoria">Categoria: {{categoria.nombre}}</h6>
+                        </ng-container>
+                      </div>
+                    </ng-container>
+                </ng-container>
               </div>
               <div class="row" style="height:80px;"></div>       
             </div>

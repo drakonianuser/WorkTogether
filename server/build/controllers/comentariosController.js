@@ -15,7 +15,7 @@ const database_1 = __importDefault(require("../database"));
 class ComentariosController {
     constructor() {
     }
-    list(req, res) {
+    list(req, res) { 
         return __awaiter(this, void 0, void 0, function* () {
             const { iddocumento } = req.params;
             //const comentarios = await pool.query('SELECT * FROM comentarios where iddocumento = ? ',[iddocumento]);
@@ -45,14 +45,14 @@ class ComentariosController {
             yield database_1.default.query('UPDATE comentarios SET ? WHERE idcomentarios = ?', [req.body, id]);
             res.json({ message: "El comentarios fue actualizado" });
         });
-    }
+    } 
     /**
      * Delete
      * este metodo esta para eliminar una categoria en caso de que esta no sea de utilidad
      * resive el identificador de la categoria atrabes de la ruta y elimina la categoria
      * de la base de datos
-     */
-    Delete(req, res) {
+     */ 
+    Delete(req, res) { 
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             yield database_1.default.query('delete from worktogether.comentario where idcomentarios =?', [id]);
